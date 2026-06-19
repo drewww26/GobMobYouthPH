@@ -1,0 +1,796 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>GovMob Youth | Accomplishments</title>
+  <link rel="stylesheet" href="styles.css" />
+  
+  <style>
+    .articles-layout-wrapper {
+      max-width: 1200px;
+      margin: 0 auto 5rem auto;
+      padding: 0 1.5rem;
+    }
+    .articles-page-header {
+      margin-bottom: 3rem;
+      margin-top: 4.5rem;
+      text-align: center;
+      padding: 0 1rem;
+      position: relative;
+      z-index: 10; /* Ensures typography stays layered perfectly above the carousel background */
+    }
+    .page-badge {
+      background: linear-gradient(90deg, rgba(125,111,255,0.15), rgba(255,178,214,0.15));
+      border: 1px solid rgba(125, 111, 255, 0.3);
+      color: #9f94ff;
+      font-size: 0.75rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      padding: 0.35rem 0.85rem;
+      border-radius: 30px;
+      display: inline-block;
+      margin-bottom: 1.25rem;
+    }
+    .articles-page-header h2 {
+      font-size: clamp(2.2rem, 7vw, 3.5rem);
+      font-weight: 800;
+      color: var(--text);
+      margin: 0 0 1rem 0;
+      letter-spacing: -0.03em;
+      line-height: 1.15;
+      text-transform: uppercase;
+      white-space: normal !important;
+    }
+    .text-gradient {
+      background: linear-gradient(135deg, #6366f1 0%, #a855f7 50%, #ec4899 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      font-size: clamp(1.5rem, 7vw, 3.5rem);
+    }
+    .articles-page-header p {
+      color: var(--muted);
+      font-size: clamp(0.95rem, 4vw, 1.1rem);
+      max-width: 650px;
+      line-height: 1.6;
+      margin: 0 auto 2rem auto;
+      white-space: normal !important;
+    }
+    .explore-more-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: linear-gradient(135deg, #7d6fff, #c06fff);
+      color: #fff;
+      border: none;
+      padding: 0.95rem 2rem;
+      border-radius: 999px;
+      font-size: 0.9rem;
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 700;
+      cursor: pointer;
+      text-decoration: none;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+    .explore-more-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+    }
+
+    /* --- Lightweight Smooth Infinite Carousel Background Layer --- */
+    .carousel-section-container {
+      margin-bottom: 4rem;
+      padding: 0;
+      overflow: hidden;
+      position: relative;
+    }
+    .carousel-track-wrapper {
+      display: flex;
+      width: max-content;
+      animation: infiniteCarouselLoop 32s linear infinite;
+      /* Fixed low opacity so it stays looking beautifully like a background element safely without lag */
+      opacity: 0.22; 
+      pointer-events: none; /* Prevents touch/click conflict issues */
+    }
+
+    .carousel {
+      display: grid;
+      grid-auto-flow: column;
+      grid-auto-columns: 260px;
+      gap: 1.25rem;
+      height: 14rem;
+      padding: 0 0.6rem;
+    }
+    .slide {
+      display: grid;
+      grid-template-rows: 1fr;
+    }
+    .card {
+      width: 100%;
+      height: 100%;
+      border-radius: 16px;
+      border: 1px solid var(--border);
+      background-size: cover;
+      background-position: center;
+    }
+    
+    /* 5 placeholders ready for your upcoming image content */
+    .placeholder-slide-1 { background: linear-gradient(135deg, #1e1b4b, #312e81); }
+    .placeholder-slide-2 { background: linear-gradient(135deg, #581c87, #3b0764); }
+    .placeholder-slide-3 { background: linear-gradient(135deg, #03346e, #121826); }
+    .placeholder-slide-4 { background: linear-gradient(135deg, #065f46, #022c22); }
+    .placeholder-slide-5 { background: linear-gradient(135deg, #854d0e, #422006); }
+
+    /* CSS hardware-accelerated continuous motion loop */
+    @keyframes infiniteCarouselLoop {
+      0% { transform: translate3d(0, 0, 0); }
+      100% { transform: translate3d(-50%, 0, 0); }
+    }
+
+    @media (min-width: 640px) {
+      .carousel {
+        grid-auto-columns: 320px;
+        height: 16rem;
+      }
+    }
+    @media (min-width: 1024px) {
+      .carousel {
+        grid-auto-columns: 400px;
+        height: 19.5rem;
+      }
+    }
+
+    /* --- Grid Content Layout Card Configurations --- */
+    .articles-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 1.75rem;
+      margin-bottom: 5rem;
+      scroll-margin-top: 5rem; 
+      position: relative;
+      z-index: 15;
+    }
+    .article-card {
+      background: var(--surface-strong);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      overflow: hidden;
+      cursor: pointer;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+      transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+    }
+    .article-card:hover {
+      transform: translateY(-6px);
+      border-color: var(--accent);
+      box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+    }
+    .article-img-holder {
+      height: 170px;
+      position: relative;
+      display: flex;
+      align-items: flex-end;
+      padding: 1.25rem;
+    }
+    .img-gradient-1 { background: linear-gradient(135deg, #7d6fff, #ffb2d6); }
+    .img-gradient-2 { background: linear-gradient(135deg, #39c4ff, #7d6fff); }
+    .img-gradient-3 { background: linear-gradient(135deg, #ffb2d6, #fffadd); }
+    .img-gradient-4 { background: linear-gradient(135deg, #6366f1, #d946ef); }
+    .img-gradient-5 { background: linear-gradient(135deg, #854d0e, #422006); }
+
+    .category-tag {
+      background: rgba(12, 14, 32, 0.7);
+      backdrop-filter: blur(4px);
+      -webkit-backdrop-filter: blur(4px);
+      color: #ffffff;
+      padding: 0.3rem 0.8rem;
+      border-radius: 20px;
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+    .article-summary {
+      padding: 1.5rem;
+    }
+    .article-date {
+      font-size: 0.78rem;
+      color: var(--muted);
+      font-weight: 500;
+      display: flex;
+      align-items: center;
+      gap: 0.35rem;
+      margin-bottom: 0.5rem;
+    }
+    .article-summary h3 {
+      font-size: 1.15rem;
+      font-weight: 700;
+      line-height: 1.4;
+      color: var(--text);
+      margin: 0 0 0.5rem 0;
+    }
+    .article-summary p {
+      font-size: 0.9rem;
+      color: var(--muted);
+      line-height: 1.5;
+      margin: 0 0 1.25rem 0;
+    }
+    .read-more {
+      font-size: 0.85rem;
+      color: var(--accent);
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: 0.35rem;
+    }
+
+    /* Modal System elements */
+    .article-modal {
+      position: fixed;
+      inset: 0;
+      background: rgba(6, 8, 20, 0.6);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      z-index: 9999;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 1.5rem;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s ease;
+    }
+    .article-modal.active {
+      opacity: 1;
+      pointer-events: all;
+    }
+    .modal-card {
+      background: var(--surface-strong);
+      width: 100%;
+      max-width: 600px;
+      max-height: 85vh;
+      border-radius: 24px;
+      overflow-y: auto;
+      position: relative;
+      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+      border: 1px solid var(--border);
+    }
+    .modal-close-btn {
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+      background: rgba(0,0,0,0.5);
+      border: none;
+      color: white;
+      font-size: 1.4rem;
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 10;
+      transition: background 0.2s;
+    }
+    .modal-close-btn:hover { background: rgba(0,0,0,0.8); }
+    .modal-hero-img { height: 220px; width: 100%; }
+    .modal-body { padding: 1.75rem; }
+    .modal-meta { display: flex; gap: 1rem; margin-bottom: 0.75rem; align-items: center; }
+    .modal-date { font-size: 0.8rem; color: var(--muted); }
+    .modal-body h2 { font-size: 1.6rem; color: var(--text); margin: 0 0 1rem 0; font-weight: 800; }
+    .modal-author-wrapper { display: flex; align-items: center; gap: 0.75rem; margin-bottom: 1.25rem; }
+    .author-avatar { width: 38px; height: 38px; border-radius: 50%; background: var(--accent); display: flex; align-items: center; justify-content: center; color: white; font-weight: 600; font-size: 0.85rem; }
+    .author-info-block { display: flex; flex-direction: column; }
+    .author-name { font-size: 0.88rem; font-weight: 600; margin: 0; color: var(--text); }
+    .author-title { font-size: 0.75rem; color: var(--muted); margin: 0; }
+    .modal-divider { border: 0; height: 1px; background: var(--border); margin-bottom: 1.25rem; }
+    .modal-full-text { font-size: 0.98rem; line-height: 1.6; color: var(--text); }
+    .modal-full-text p { margin-bottom: 1rem; }
+    .modal-full-text ul { padding-left: 1.25rem; margin-bottom: 1rem; }
+    .modal-full-text li { margin-bottom: 0.5rem; }
+
+    @media (max-width: 768px) {
+      .articles-grid { grid-template-columns: 1fr; }
+      .articles-page-header { margin-top: 2.5rem; margin-bottom: 2.5rem; }
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <div class="brand">
+      <div class="logo-placeholder">Logo</div>
+    </div>
+
+    <nav class="site-nav">
+      <a href="index.html">HOME</a>
+      <a href="about.html">ABOUT US</a>
+      <div class="nav-item dropdown">
+        <a href="programs.html" class="dropdown-toggle" aria-haspopup="true" aria-expanded="false">PROGRAMS <span class="dropdown-icon">▾</span></a>
+        <div class="dropdown-panel">
+          <span>COMING SOON</span>
+        </div>
+      </div>
+      <a href="accomplishments.html">ACCOMPLISHMENTS</a>
+      <a href="constitution.html">CONSTITUTION & BY-LAWS</a>
+      <a href="articles.html">ARTICLES</a>
+      <a href="contact.html">CONTACT US</a>
+    </nav>
+    <div class="header-actions">
+      <button class="theme-toggle" type="button" aria-label="Switch to dark mode">
+        <img class="theme-icon" src="moon-solid.png" alt="" width="22" height="22">
+      </button>
+      <button class="join-header-btn" type="button">JOIN NOW</button>
+    </div>
+  </header>
+
+  <main class="articles-layout-wrapper">
+    <div class="articles-page-header">
+      <span class="page-badge">Our Legacy</span>
+      <h2><span class="text-gradient">Accomplishments</span></h2>
+      <p>Organized youth policy workshops, launched mobility awareness campaigns, supported youth representation in local governance, and built partnerships with mentors, NGOs, and advocates.</p>
+      <a href="#content-cards" class="explore-more-btn">
+        Explore More 
+      </a>
+    </div>
+
+    <div class="carousel-section-container">
+      <div class="carousel-track-wrapper">
+        <div class="carousel">
+          <div class="slide"><div class="card placeholder-slide-1"></div></div>
+          <div class="slide"><div class="card placeholder-slide-2"></div></div>
+          <div class="slide"><div class="card placeholder-slide-3"></div></div>
+          <div class="slide"><div class="card placeholder-slide-4"></div></div>
+          <div class="slide"><div class="card placeholder-slide-5"></div></div>
+        </div>
+        <div class="carousel" aria-hidden="true">
+          <div class="slide"><div class="card placeholder-slide-1"></div></div>
+          <div class="slide"><div class="card placeholder-slide-2"></div></div>
+          <div class="slide"><div class="card placeholder-slide-3"></div></div>
+          <div class="slide"><div class="card placeholder-slide-4"></div></div>
+          <div class="slide"><div class="card placeholder-slide-5"></div></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="articles-grid" id="content-cards">
+      
+      <div class="article-card" onclick="openAccomplishmentModal(1)">
+        <div class="article-img-holder img-gradient-1">
+          <span class="category-tag">Education</span>
+        </div>
+        <div class="article-summary">
+          <div class="article-date">June 2026</div>
+          <h3>Youth Policy Workshops & Civic Forums</h3>
+          <p>Organized regional policy training paths and accessible civic education programs for grassroots communities.</p>
+          <span class="read-more">View Full Impact &rarr;</span>
+        </div>
+      </div>
+
+      <div class="article-card" onclick="openAccomplishmentModal(2)">
+        <div class="article-img-holder img-gradient-2">
+          <span class="category-tag">Advocacy</span>
+        </div>
+        <div class="article-summary">
+          <div class="article-date">April 2026</div>
+          <h3>Mobility Awareness Campaigns Launch</h3>
+          <p>Partnered with local schools to deploy dynamic safety and inclusive public mobility guidelines.</p>
+          <span class="read-more">View Full Impact &rarr;</span>
+        </div>
+      </div>
+
+      <div class="article-card" onclick="openAccomplishmentModal(3)">
+        <div class="article-img-holder img-gradient-3">
+          <span class="category-tag">Governance</span>
+        </div>
+        <div class="article-summary">
+          <div class="article-date">March 2026</div>
+          <h3>Local Governance Consultation Seats</h3>
+          <p>Secured permanent seats for youth representatives within regional development councils.</p>
+          <span class="read-more">View Full Impact &rarr;</span>
+        </div>
+      </div>
+
+      <div class="article-card" onclick="openAccomplishmentModal(4)">
+        <div class="article-img-holder img-gradient-4">
+          <span class="category-tag">Partnership</span>
+        </div>
+        <div class="article-summary">
+          <div class="article-date">January 2026</div>
+          <h3>Strategic NGO & Mentor Coalitions</h3>
+          <p>Built stable structural resource pipelines with global mobility advocates and academic mentors.</p>
+          <span class="read-more">View Full Impact &rarr;</span>
+        </div>
+      </div>
+
+      <div class="article-card" onclick="openAccomplishmentModal(5)">
+        <div class="article-img-holder img-gradient-5">
+          <span class="category-tag">Partnership</span>
+        </div>
+        <div class="article-summary">
+          <div class="article-date">2027</div>
+          <h3>COMING SOON</h3>
+          <p>SOON.</p>
+          <span class="read-more">View Full Impact &rarr;</span>
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <div id="accomplishment-modal" class="article-modal" onclick="handleModalOutsideClick(event)">
+    <div class="modal-card">
+      <button class="modal-close-btn" onclick="closeAccomplishmentModal()">&times;</button>
+      <div id="modal-hero" class="modal-hero-img"></div>
+      <div class="modal-body">
+        <div class="modal-meta">
+          <span id="modal-tag" class="category-tag">Category</span>
+          <span id="modal-date" class="modal-date">Date</span>
+        </div>
+        <h2 id="modal-title">Accomplishment Title</h2>
+        <div class="modal-author-wrapper">
+          <div class="author-avatar">GY</div>
+          <div class="author-info-block">
+            <p class="author-name">GovMob Executive Council</p>
+            <p class="author-title">Official Milestone Report</p>
+          </div>
+        </div>
+        <hr class="modal-divider">
+        <div id="modal-text" class="modal-full-text"></div>
+      </div>
+    </div>
+  </div>
+
+  <footer class="site-footer">
+    <div class="footer-content">
+      <div class="footer-brand">
+        <div class="footer-logo">GY</div>
+        <div>
+          <h3>GovMob Youth</h3>
+          <p>Empowering youth for inclusive governance, community action, and positive social change.</p>
+        </div>
+        <div class="footer-social">
+          <a href="#" class="footer-social-icon" aria-label="Facebook">f</a>
+          <a href="#" class="footer-social-icon" aria-label="Twitter">t</a>
+          <a href="#" class="footer-social-icon" aria-label="Instagram">i</a>
+        </div>
+      </div>
+
+      <div class="footer-grid">
+        <div class="footer-column">
+          <h4>Organization</h4>
+          <a href="about.html">About Us</a>
+          <a href="index.html#executive-council">Our Team</a>
+          <a href="programs.html">Partners</a>
+          <a href="accomplishments.html">News</a>
+        </div>
+        <div class="footer-column">
+          <h4>Programs</h4>
+          <a href="programs.html">All Programs</a>
+        </div>
+        <div class="footer-column">
+          <h4>Get Involved</h4>
+          <a href="index.html#join">Join Us</a>
+          <a href="contact.html">Volunteer</a>
+          <a href="contact.html">Donate</a>
+          <a href="contact.html">Contact</a>
+        </div>
+        <div class="footer-column">
+          <h4>Contact</h4>
+          <p>Muntinlupa City, Philippines</p>
+          <a href="mailto:info@govmobyouth.org">info@govmobyouth.org</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">© 2026 Governance and Mobility Youth Alliance. All rights reserved.</div>
+  </footer>
+
+  <div id="join-modal" class="modal">
+    <div class="modal-content">
+      <span class="close">&times;</span>
+      <h2>JOIN NOW</h2>
+      <p>Membership in GOVMOB YOUTH is open to individuals within the youth sector who:</p>
+      <ul>
+        <li>A Resident/Voter Youth of Muntinlupa aged 15-30 Years old</li>
+        <li>Membership is open to individuals within the youth sector who align with the vision, mission, and objectives.</li>
+        <li>Applicants must agree to uphold the GOVMOB Youth Constitution and By-Laws and comply with its rules and procedures.</li>
+        <li>Prospective members must demonstrate commitment to ethical conduct and active participation in organizational activities.</li>
+        <li>All applicants are subject to the prescribed application, screening, and orientation process.</li>
+      </ul>
+      <h3>Expectations for Members</h3>
+      <ul>
+        <li><strong>Active Participation</strong> Attend assemblies, meetings, and committee work.</li>
+        <li><strong>Ethical Standard</strong> Uphold transparency, accountability, and integrity.</li>
+        <li><strong>Program Support</strong> Support organizational programs and official initiatives.</li>
+        <li><strong>Rule Compliance</strong> Respect parliamentary procedures and internal rules.</li>
+        <li><strong>Disciplinary Review</strong> Failure to meet expectations may lead to internal review.</li>
+      </ul>
+      <h3>Pathways for Members</h3>
+      <ul>
+        <li><strong>Leadership Training</strong> Participate in leadership programs and institutional mentoring.</li>
+        <li><strong>Policy and Advocacy</strong> Gain exposure to policy research and advocacy work.</li>
+        <li><strong>Committee Leadership</strong> Take on committee leadership roles and officer candidacy.</li>
+        <li><strong>Partnerships</strong> Engage in forums, community programs, and organizational partnerships.</li>
+        <li><strong>Advancements</strong> Progress within the organization is based on performance and achievement.</li>
+      </ul>
+      <form id="join-form">
+        <label for="join-name">Name</label>
+        <input type="text" id="join-name" name="name" required>
+        <label for="join-email">Email</label>
+        <input type="email" id="join-email" name="email" required>
+        <button type="submit" class="primary-button">Join Now</button>
+      </form>
+    </div>
+  </div>
+
+  <div id="feedback-modal" class="modal">
+    <div class="modal-content">
+      <span class="close" id="feedback-close">&times;</span>
+      <h2>Site Feedback</h2>
+      <p>Share your rating, comments, or suggestions to help improve the GOVMOB Youth site.</p>
+      <form id="feedback-form" class="feedback-form" action="https://formsubmit.co/ajax/itswenickk@gmail.com" method="POST">
+        <input type="hidden" name="_subject" value="GOVMOB Youth Feedback">
+        <input type="hidden" name="_captcha" value="false">
+        <label for="feedback-name">Name</label>
+        <input type="text" id="feedback-name" name="name" placeholder="Your name (optional)">
+        <label for="feedback-email">Email</label>
+        <input type="email" id="feedback-email" name="email" placeholder="Your email (optional)">
+        <label for="feedback-rating">Rating</label>
+        <select id="feedback-rating" name="rating" required>
+          <option value="">Select a rating</option>
+          <option value="5 - Excellent">5 - Excellent</option>
+          <option value="4 - Very Good">4 - Very Good</option>
+          <option value="3 - Good">3 - Good</option>
+          <option value="2 - Fair">2 - Fair</option>
+          <option value="1 - Needs Improvement">1 - Needs Improvement</option>
+        </select>
+        <label for="feedback-comments">Comments or suggestions</label>
+        <textarea id="feedback-comments" name="message" placeholder="Tell us what we can improve..." required></textarea>
+        <div class="feedback-actions">
+          <button type="button" class="secondary-button" id="feedback-cancel">Cancel</button>
+          <button type="submit" class="primary-button">Send Feedback</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <nav class="mobile-bottom-nav" aria-label="Mobile navigation">
+    <div class="mb-nav-group"><a href="index.html" class="mb-nav-link"><img src="./house-solid.png" alt="Home"><span>Home</span></a></div>
+    <div class="mb-nav-group"><a href="about.html" class="mb-nav-link"><img src="./circle-info-solid.png" alt="About"><span>About</span></a></div>
+    <div class="mb-nav-group"><a href="programs.html" class="mb-nav-link"><img src="./person-walking-luggage-solid.png" alt="Programs"><span>Programs</span></a></div>
+    <div class="mb-nav-group"><a href="contact.html" class="mb-nav-link"><img src="./message-solid.png" alt="Contact Us"><span>Contact</span></a></div>
+    <div class="mb-nav-group">
+      <button class="more-toggle" aria-expanded="false" aria-controls="mobile-more-menu">
+        <svg width="1.25rem" height="1.25rem" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="18" x2="21" y2="18"></line>
+        </svg>
+        <span>More</span>
+      </button>
+    </div>
+  </nav>
+
+  <div class="mobile-drawer-overlay" id="drawer-overlay"></div>
+  <div class="mobile-more-panel" id="mobile-more-menu" role="dialog" aria-hidden="true" aria-label="More options">
+    <a href="accomplishments.html" class="mb-more-link"><img src="./trophy-solid.png" alt="Accomplishments"><span>Accomplishments</span></a>
+    <a href="constitution.html" class="mb-more-link"><img src="./book-solid.png" alt="Constitution & By-Laws"><span>Constitution & By-Laws</span></a>
+    <a href="articles.html" class="mb-more-link"><img src="./book-solid.png" alt="Articles"><span>Articles</span></a>
+  </div>
+
+  <div class="message-widget">
+    <details>
+       <summary class="message-toggle" aria-label="Open contact form"><img src="message.png" alt="Message Icon" class="widget-custom-icon"></summary>
+      <div class="message-panel">
+        <div class="message-panel-header">
+          <span>Send a message</span>
+          <button type="button" class="message-close" aria-label="Close">&times;</button>
+        </div>
+        <p>Tell us your question and we will contact you as soon as possible.</p>
+        <form class="message-form">
+          <label for="msg-first-name">First Name *</label>
+          <input type="text" id="msg-first-name" name="firstName" placeholder="Your first name" required>
+          <label for="msg-last-name">Last Name *</label>
+          <input type="text" id="msg-last-name" name="lastName" placeholder="Your last name" required>
+          <label for="msg-email">Email Address *</label>
+          <input type="email" id="msg-email" name="email" placeholder="your.email@example.com" required>
+          <label for="msg-question">What do you need help with? *</label>
+          <textarea id="msg-question" name="question" placeholder="Briefly describe your question or issue..." rows="3" required></textarea>
+          <label for="msg-details">Additional Details (Optional)</label>
+          <textarea id="msg-details" name="details" placeholder="Any additional information..." rows="3"></textarea>
+          <div class="message-actions">
+            <button type="button" class="message-cancel">Cancel</button>
+            <button type="submit" class="message-submit">Submit</button>
+          </div>
+        </form>
+      </div>
+    </details>
+  </div>
+
+  <script>
+    const accomplishmentData = {
+      1: {
+        title: "Youth Policy Workshops & Civic Forums",
+        date: "June 2026",
+        tag: "Education",
+        gradient: "linear-gradient(135deg, #7d6fff, #ffb2d6)",
+        html: `<p>Our premier education drive successfully equipped over 500 young leaders with core policy draft tools and civic analysis strategies.</p>
+               <ul>
+                 <li><strong>Local Workshops:</strong> Held 12 physical and digital sessions covering parliamentary debate structures.</li>
+                 <li><strong>Resource Access:</strong> Released open-source toolkits distributed to youth councils across Muntinlupa City.</li>
+                 <li><strong>Community Outreach:</strong> Brought civic literacy toolkits directly to grassroots sectors and community assemblies.</li>
+               </ul>`
+      },
+      2: {
+        title: "Mobility Awareness Campaigns Launch",
+        date: "April 2026",
+        tag: "Advocacy",
+        gradient: "linear-gradient(135deg, #39c4ff, #7d6fff)",
+        html: `<p>We successfully designed and rolled out mobility awareness frameworks across multi-sector educational systems to make urban transport safer and accessible.</p>
+               <ul>
+                 <li><strong>School Integration:</strong> Partnered with campus boards to deploy safety modules.</li>
+                 <li><strong>Public Briefings:</strong> Hosted transit rights forums for student commuters.</li>
+                 <li><strong>Advocacy Material:</strong> Disseminated localized digital graphics detailing alternative route guidelines.</li>
+               </ul>`
+      },
+      3: {
+        title: "Local Governance Consultation Seats",
+        date: "March 2026",
+        tag: "Governance",
+        gradient: "linear-gradient(135deg, #ffb2d6, #fffadd)",
+        html: `<p>Secured direct consulting presence within municipal development assemblies, giving youth an active vote on town policy directions.</p>
+               <ul>
+                 <li><strong>Official Representation:</strong> Appointed formal youth consulting representatives to policy boards.</li>
+                 <li><strong>Policy Impact:</strong> Contributed recommendations directly to local urban planning committees.</li>
+                 <li><strong>Feedback Loops:</strong> Built clear digital channels for young citizens to voice local concerns.</li>
+               </ul>`
+      },
+      4: {
+        title: "Strategic NGO & Mentor Coalitions",
+        date: "January 2026",
+        tag: "Partnership",
+        gradient: "linear-gradient(135deg, #6366f1, #d946ef)",
+        html: `<p>Formed long-term operational alliances with institutional mentors, international NGOs, and legal mobility advisors to fund research programs.</p>
+               <ul>
+                 <li><strong>Mentorship Circles:</strong> Connected young advocates with experienced policy professionals.</li>
+                 <li><strong>Program Support:</strong> Secured cross-organizational resource pipelines for student initiatives.</li>
+                 <li><strong>Joint Assemblies:</strong> Planned collaborative conventions with allied advocacy groups.</li>
+               </ul>`
+      },
+      5: {
+        title: "COMING SOON",
+        date: "2027",
+        tag: "Partnership",
+        gradient: "linear-gradient(135deg, #854d0e, #422006)",
+        html: `<p>SOON.</p>`
+      }
+
+    };
+
+    function openAccomplishmentModal(id) {
+      const data = accomplishmentData[id];
+      if(!data) return;
+      document.getElementById('modal-title').innerText = data.title;
+      document.getElementById('modal-date').innerText = data.date;
+      document.getElementById('modal-tag').innerText = data.tag;
+      document.getElementById('modal-text').innerHTML = data.html;
+      document.getElementById('modal-hero').style.background = data.gradient;
+      document.getElementById('accomplishment-modal').classList.add('active');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeAccomplishmentModal() {
+      document.getElementById('accomplishment-modal').classList.remove('active');
+      document.body.style.overflow = '';
+    }
+
+    function handleModalOutsideClick(e) {
+      if(e.target.id === 'accomplishment-modal') closeAccomplishmentModal();
+    }
+
+    document.addEventListener('DOMContentLoaded', function() {
+      // Explore More Smooth Scroll Hook
+      const exploreBtn = document.querySelector('.explore-more-btn');
+      if (exploreBtn) {
+        exploreBtn.addEventListener('click', function(e) {
+          e.preventDefault();
+          const targetId = this.getAttribute('href');
+          const targetSection = document.querySelector(targetId);
+          if (targetSection) {
+            targetSection.scrollIntoView({ behavior: 'smooth' });
+          }
+        });
+      }
+
+      // Drawer navigation hooks
+      const moreToggle = document.querySelector('.more-toggle');
+      const morePanel = document.getElementById('mobile-more-menu');
+      const overlay = document.getElementById('drawer-overlay');
+
+      function closeDrawer() {
+        if (morePanel) morePanel.setAttribute('aria-hidden', 'true');
+        if (overlay) overlay.classList.remove('active');
+        if (moreToggle) moreToggle.setAttribute('aria-expanded', 'false');
+      }
+      if (moreToggle && morePanel) {
+        moreToggle.addEventListener('click', function(e) {
+          e.preventDefault();
+          const isOpen = morePanel.getAttribute('aria-hidden') === 'false';
+          if (isOpen) closeDrawer();
+          else {
+            morePanel.setAttribute('aria-hidden', 'false');
+            if (overlay) overlay.classList.add('active');
+            moreToggle.setAttribute('aria-expanded', 'true');
+          }
+        });
+        if (overlay) overlay.addEventListener('click', closeDrawer);
+      }
+    });
+  </script>
+
+  <script>
+    function showWidgetNotification(message, type = 'success') {
+      var notification = document.createElement('div');
+      notification.className = 'notification ' + type;
+      notification.innerHTML = '<span class="notification-icon">' + (type === 'error' ? '✕' : type === 'info' ? 'ℹ' : '✓') + '</span>' +
+        '<div>' + message + '</div>' + '<button class="notification-close" aria-label="Close">&times;</button>';
+      document.body.appendChild(notification);
+      notification.querySelector('.notification-close').addEventListener('click', function () {
+        notification.classList.add('hide');
+        setTimeout(function () { if (notification.parentElement) notification.remove(); }, 300);
+      });
+      setTimeout(function () { if (notification.parentElement) { notification.classList.add('hide'); setTimeout(function () { notification.remove(); }, 300); } }, 5000);
+    }
+
+    document.addEventListener('DOMContentLoaded', function() {
+      const modal = document.getElementById('join-modal');
+      const joinHeaderBtn = document.querySelector('.join-header-btn');
+      const closeBtn = document.querySelector('.close');
+      if (joinHeaderBtn && modal) { joinHeaderBtn.addEventListener('click', () => modal.style.display = 'block'); }
+      if (closeBtn && modal) { closeBtn.addEventListener('click', () => modal.style.display = 'none'); }
+      window.addEventListener('click', (e) => { if (e.target === modal) modal.style.display = 'none'; });
+
+      // Feedback form handlers
+      const feedbackModal = document.getElementById('feedback-modal');
+      const feedbackClose = document.getElementById('feedback-close');
+      const feedbackCancel = document.getElementById('feedback-cancel');
+      const feedbackForm = document.getElementById('feedback-form');
+
+      function closeFeedback() { if (feedbackModal) feedbackModal.style.display = 'none'; }
+      if (feedbackClose) feedbackClose.addEventListener('click', closeFeedback);
+      if (feedbackCancel) feedbackCancel.addEventListener('click', closeFeedback);
+      if (feedbackForm) {
+        feedbackForm.addEventListener('submit', async function(e) {
+          e.preventDefault();
+          var formData = new FormData(feedbackForm);
+          var payload = { name: formData.get('name') || '', email: formData.get('email') || '', rating: formData.get('rating') || '', message: formData.get('message') || '', _subject: 'GOVMOB Youth Feedback', _captcha: 'false' };
+          try {
+            var res = await fetch('https://formsubmit.co/ajax/itswenickk@gmail.com', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(payload) });
+            if (res.ok) { showWidgetNotification('Thanks for your feedback!', 'success'); feedbackForm.reset(); closeFeedback(); }
+            else { showWidgetNotification('Submission error. Try again.', 'error'); }
+          } catch(err) { showWidgetNotification('Network error occurred.', 'error'); }
+        });
+      }
+    });
+
+    // Theme Engine Script Block 
+    (function() {
+      const themeToggle = document.querySelector('.theme-toggle');
+      function applyTheme(theme) {
+        const isDark = theme === 'dark';
+        document.body.classList.toggle('dark-mode', isDark);
+        document.body.classList.toggle('light-mode', !isDark);
+        if (themeToggle) {
+          const icon = themeToggle.querySelector('.theme-icon');
+          if (icon) icon.src = isDark ? 'sun-solid.png' : 'moon-solid.png';
+        }
+        localStorage.setItem('govmob-theme', theme);
+      }
+      if (themeToggle) {
+        themeToggle.addEventListener('click', () => applyTheme(document.body.classList.contains('dark-mode') ? 'light' : 'dark'));
+      }
+      applyTheme(localStorage.getItem('govmob-theme') || 'light');
+    })();
+  </script>
+</body>
+</html>
