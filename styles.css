@@ -54,20 +54,23 @@ img {
 }
 
 .site-header {
-  position: sticky;
+  position: fixed; /* Pins the header so it never scrolls away */
   top: 0;
-  z-index: 10;
+  left: 0;
+  right: 0;
+  z-index: 1000; /* Keeps it above all other layered components */
   display: flex;
   flex-wrap: wrap;
   align-items: center;
   justify-content: space-between;
-  gap: 1.5rem;
-  padding: 1rem 2rem;
-  padding-right: 5rem;
+  gap: 0.8rem; /* Keeps it compact as previously requested */
+  padding: 0.5rem 2rem;
   background: var(--surface);
   backdrop-filter: blur(14px);
   border-bottom: 1px solid rgba(160, 148, 190, 0.18);
 }
+
+
 
 .brand {
   display: flex;
@@ -149,8 +152,8 @@ img {
   text-decoration: none;
   color: var(--text);
   font-weight: 600;
-  font-size: 0.82rem;
-  padding: 0.65rem 0.9rem;
+  font-size: 0.8rem;
+  padding: 0.4rem 0.65rem;
   border-radius: 999px;
   transition: color 0.25s ease, text-shadow 0.25s ease;
   background: transparent;
@@ -251,8 +254,8 @@ img {
   border: none;
   background: var(--surface);
   cursor: pointer;
-  width: 44px;
-  height: 44px;
+  width: 40px;
+  height: 40px;
   padding: 0;
   border-radius: 14px;
   color: var(--text);
@@ -266,28 +269,31 @@ img {
   display: none;
 }
 
-.join-header-btn {
+.join-header-btn{
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  padding: 0.85rem 1.25rem;
+  padding: 0.75rem 1rem;
   border: none;
   border-radius: 16px;
-  background: linear-gradient(135deg, #7d6fff, #ffb2d6);
+  background: linear-gradient(100deg, #7d6fff, #ffb2d6);
   color: #fff;
-  font-size: 0.86rem;
+  font-size: 0.65rem;
   font-weight: 700;
   cursor: pointer;
   white-space: nowrap;
   transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
-.join-header-btn:hover,
+.join-header-btn-btn:hover,
 .join-header-btn:focus-visible {
   transform: translateY(-1px);
   box-shadow: 0 12px 26px rgba(125, 111, 255, 0.22);
 }
 
+/* ==========================================================================
+   HEADER RESPONSIVE REPAIR (1120px)
+   ========================================================================== */
 @media (max-width: 1120px) {
   .site-nav {
     display: none !important;
@@ -299,12 +305,18 @@ img {
 
   .theme-toggle {
     order: 2;
+  }
+
+  .header-actions {
+    width: auto;
+    justify-content: flex-end;
+  }
+}
+
 /* ==========================================================================
    FIX: Force bottom-only navigation for exact 980x1808 viewport
-   Ensures nav is removed from header and the mobile bottom bar is shown
    ========================================================================== */
 @media (width: 980px) and (height: 1808px) {
-  /* hide header navigation and header action controls */
   .site-nav,
   .site-nav.open,
   .header-actions,
@@ -313,14 +325,12 @@ img {
     display: none !important;
   }
 
-  /* compact header so it doesn't look like a nav strip */
   .site-header {
     padding-top: 0.5rem !important;
     padding-bottom: 0.5rem !important;
     align-items: center !important;
   }
 
-  /* ensure the mobile bottom nav is visible and fixed */
   .mobile-bottom-nav {
     display: flex !important;
     position: fixed !important;
@@ -330,7 +340,6 @@ img {
     z-index: 1200 !important;
   }
 
-  /* move floating widgets above the bottom nav */
   .message-widget {
     bottom: calc(6.2rem + env(safe-area-inset-bottom, 0)) !important;
     z-index: 1500 !important;
@@ -378,10 +387,11 @@ img {
 }
 
 main {
-  padding: 2rem 2rem 4rem;
+  padding: 6rem 2rem 4rem; /* Changed top padding from 2rem to 6rem to clear the header */
   max-width: 1180px;
   margin: 0 auto;
 }
+
 
 .section {
   margin-top: 2.5rem;
@@ -408,7 +418,7 @@ main {
 }
 
 .vmo-card h2 {
-  margin: 0 0 1rem;
+  margin: 0 0 0rem;
   font-size: 1.5rem;
   text-transform: uppercase;
   letter-spacing: 0.14em;
@@ -769,6 +779,7 @@ main {
 
 .cta-button {
   display: inline-block;
+  position: center;
   padding: 0.75rem 1.5rem;
   border: none;
   border-radius: 18px;
@@ -2444,13 +2455,17 @@ main {
   }
 
   .site-header {
-    padding: 0.75rem 1rem;
+    position: fixed;
+    padding: 0.25rem 1rem;
     padding-right: 1rem;
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
     position: relative;
     flex-wrap: nowrap;
   }
 
   .site-header .brand {
+    position: fixed;
     flex: none;
     min-width: 0;
     width: 120px;
@@ -2470,9 +2485,9 @@ main {
   }
 
   .logo-placeholder {
-    width: 48px;
-    height: 48px;
-    font-size: 0.75rem;
+    width: 40px;
+    height: 40px;
+    font-size: 0.48rem;
   }
 
   .site-nav {
@@ -3174,7 +3189,7 @@ main {
   flex-direction: column;
   gap: 1.5rem;
   max-width: 950px;
-  margin: 2rem auto;
+  margin: 0.5rem auto;
   padding: 0 1rem;
 }
 
@@ -3185,7 +3200,7 @@ main {
   background: var(--card-bg, #ffffff);
   border: 1px solid rgba(142, 129, 188, 0.15);
   border-radius: 12px;
-  padding: 1.5rem;
+  padding: 0.5rem;
   cursor: pointer;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.02);
   transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
@@ -3677,11 +3692,15 @@ main {
 
 .hero-premium-buttons {
   display: flex;
+  position: center;
   gap: 1rem;
 }
 
 .cta-button-premium {
   background: var(--primary, #7d6fff);
+  position: center;
+  align-items: center;
+  align-content: center;
   color: #ffffff;
   border: none;
   padding: 0.8rem 1.6rem;
@@ -4964,10 +4983,1512 @@ body.dark-mode .tree-picture-holder-container {
   background: var(--surface-strong) !important; /* Adapts to your theme variables */
   border-bottom: 1px solid var(--border);
 }
+/* ==========================================================================
+   ULTIMATE FULL-BLEED HERO & MOVED UPWARD
+   ========================================================================== */
+/* Force absolute restriction on the html/body/main elements to destroy the right gap */
+html, body, main, #app, .site-wrapper {
+  overflow-x: hidden !important;
+  width: 100% !important;
+  max-width: 100% !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
 
+/* Forces the section container itself to break out of any constraints */
+.hero-immersive-section {
+  position: relative !important;
+  width: 100vw !important;         
+  margin-left: calc(50vw + -50%) !important; 
+  margin-right: calc(50vw + -50%) !important;
+  left: 0 !important;
+  right: 0 !important;
+  
+  /* MOVED UPWARD: Forces the section up right against your navigation bar */
+  margin-top: -6rem !important;    
+  padding-top: 1rem !important;    /* Drastically minimizes interior top space */
+  padding-bottom: 2rem !important;
+  
+  min-height: auto !important;     /* Eliminates vertical flexing gaps */
+  height: auto !important;
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  justify-content: flex-start !important;
+  box-sizing: border-box !important;
+}
 
+.hero-bg-media {
+  position: absolute !important;
+  top: 0 !important;
+  left: 0 !important;
+  width: 100vw !important;         /* Hard-binds image container to window edges */
+  height: 100% !important;
+  z-index: 1 !important;
+}
 
+.hero-bg-media img {
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover !important;
+  object-position: center top !important;
+  filter: brightness(0.35) contrast(1.1) saturate(0.8) !important;
+}
 
+.hero-bg-overlay-fade {
+  position: absolute !important;
+  top: 0 !important;
+  left: 0 !important;
+  width: 100vw !important;
+  height: 100% !important;
+  background: linear-gradient(
+    to bottom,
+    rgba(20, 15, 35, 0.1) 0%,
+    rgba(20, 15, 35, 0.5) 60%,
+    var(--bg, #101018) 100%
+  ) !important;
+}
 
+.hero-premium-wrapper {
+  position: relative !important;
+  z-index: 3 !important;
+  width: 92% !important;           
+  max-width: 1350px !important;
+  display: flex !important;
+  flex-direction: column !important; 
+  align-items: center !important;
+  justify-content: flex-start !important;
+  gap: 0.8rem !important;          /* Keeps text blocks tight and condensed */
+  text-align: center !important; 
+  margin: 0 auto !important;
+  padding-top: 0 !important;
+  position: relative !important;
+    margin-bottom: -100px !important; /* Pulls the content below it up so you don't leave a blank gap */
+    top: -150px !important;         /* Push this number higher (like -150px) to force the text further up */
+}
 
+.hero-copy-premium {
+  background: transparent !important;
+  box-shadow: none !important;
+  border: none !important;
+  padding: 0 !important;
+  max-width: 850px !important; 
+  margin-top: auto !important;        /* Pulls text completely to the top edge */
+  position: relative !important;
+    top: -50px !important;         /* Push this number higher (like -150px) to force the text further up */
+    margin-bottom: -100px !important; /* Pulls the content below it up so you don't leave a blank gap */
+    margin-top: -150px !important
+}
 
+.hero-copy-premium h2 {
+  font-size: 2.2rem !important;
+  line-height: 1.2 !important;
+  color: #ffffff !important;
+  text-shadow: 0 2px 12px rgba(0, 0, 0, 0.7) !important;
+  margin-top: auto !important;
+  margin-bottom: 0rem !important;
+}
+
+.hero-copy-premium p {
+  color: rgba(255, 255, 255, 0.9) !important;
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.6) !important;
+  font-size: 0.95rem !important;
+  line-height: 1.45 !important;
+  margin-bottom: 0.8rem !important;
+}
+
+.hero-premium-buttons {
+  display: flex !important;
+  justify-content: center !important;
+  gap: 1rem !important;
+  width: 100% !important;
+  margin-bottom: 0.5rem !important;
+}
+
+.hero-goals-premium {
+  background: rgba(255, 255, 255, 0.05) !important;
+  backdrop-filter: blur(12px) !important;
+  -webkit-backdrop-filter: blur(12px) !important;
+  border: 1px solid rgba(255, 255, 255, 0.1) !important;
+  padding: 1rem !important;
+  border-radius: 14px !important;
+  width: 100% !important;
+  box-sizing: border-box !important;
+}
+
+.goals-premium-list {
+  display: flex !important;
+  flex-direction: row !important; 
+  justify-content: space-between !important;
+  gap: 1rem !important;
+  list-style: none !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  width: 100% !important;
+}
+
+.goals-premium-list li {
+  flex: 1; 
+  text-align: left; 
+  background: rgba(255, 255, 255, 0.03);
+  padding: 1rem;
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.04);
+}
+
+/* ==========================================================================
+   STRICT COMPACT SIDE MARGINS & CONTAINER REMOVAL (VMO TO EXECUTIVE TREE)
+   ========================================================================== */
+/* Pulls lower sections out while leaving a neat, small side space margin */
+.vmo-section,
+.dashboard-section,
+.gallery-section,
+.executive-section,
+#about,
+#gallery,
+#officers,
+section {
+  width: 94% !important;            /* Reduced margins: spans wide but saves a tidy margin on each side */
+  max-width: 1350px !important;     
+  margin: 2.5rem auto !important;   /* Centers the sections horizontally */
+  padding-left: 0 !important;       
+  padding-right: 0 !important;
+  box-sizing: border-box !important;
+
+  /* Force-strips the white block backgrounds container cards entirely */
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+}
+
+/* Extra targeted safety selectors to thoroughly melt remaining box frames */
+.vmo-container,
+.gallery-container-box,
+.executive-container-box,
+.dashboard-card,
+.about-card,
+.premium-container-box {
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+  padding: 0 !important;
+  margin: 0 !important;
+}
+
+/* ==========================================================================
+   MOBILE PREVIEW OVERRIDES
+   ========================================================================== */
+@media (max-width: 968px) {
+  .hero-immersive-section {
+    margin-top: -2rem !important;   
+    padding: 2rem 0 !important;
+  }
+
+  .hero-premium-wrapper {
+    width: 90% !important;
+  }
+
+  .hero-copy-premium h2 {
+    font-size: 1.7rem;
+  }
+
+  .hero-premium-buttons {
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .hero-premium-buttons a {
+    width: 100%;
+  }
+
+  .goals-premium-list {
+    flex-direction: column !important; 
+    gap: 0.75rem;
+  }
+
+  /* Mobile margin adaptation for content sections */
+  .vmo-section,
+  .gallery-section,
+  .executive-section,
+  section {
+    width: 92% !important;
+  }
+}
+/* ==========================================================================
+   PERFECTLY CENTERED HERO CONTENT & STABLE FULL-BLEED BACKGROUND
+   ========================================================================== */
+
+/* Safely anchors the background container edge-to-edge without pushing layout */
+.hero-immersive-section {
+    position: relative !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;      /* Horizontally centers everything inside the section */
+    justify-content: flex-start !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+    box-sizing: border-box !important;
+    overflow: hidden !important;
+    min-height: 40vh !important; 
+    margin-top: -3.5rem !important; 
+    padding-top: 1.5rem !important; 
+}
+
+/* Hard-binds background media back to full viewport scale edges */
+.hero-bg-media, 
+.hero-bg-overlay-fade {
+    position: absolute !important;
+    top: 0 !important;
+    left: 0 !important;
+    width: 100% !important;
+    height: 100% !important;
+    min-width: 100% !important;
+    transform: none !important;
+    z-index: 1 !important;
+}
+
+/* Aligns text content container perfectly with the layout proportions below */
+.hero-premium-wrapper {
+    position: relative !important;
+    z-index: 5 !important;
+    width: 94% !important;               /* Matches the exact width configuration of lower blocks */
+    max-width: 1350px !important;        /* Aligns maximum boundaries to match your VMO/Gallery setups */
+    margin-left: auto !important;
+    margin-right: auto !important;       /* Forces the wrapper to sit perfectly centered */
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;      /* Centers inner elements horizontally */
+    justify-content: flex-start !important;
+    text-align: center !important;
+    box-sizing: border-box !important;
+    position: relative !important;
+    top: -100px !important;         /* Push this number higher (like -150px) to force the text further up */
+    margin-bottom: -100px !important; /* Pulls the content below it up so you don't leave a blank gap */
+}
+
+/* Centers the primary typography columns balance verbatim */
+.hero-copy-premium {
+    width: 100% !important;
+    max-width: 850px !important;         /* Keeps comfortable reading length line breaks */
+    margin-left: auto !important;
+    margin-right: auto !important;       /* Dead-centers the text wrapper column box */
+    text-align: center !important;
+    background: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+    padding: 0 !important;
+    position: relative !important;
+    top: -100px !important;         /* Push this number higher (like -150px) to force the text further up */
+    margin-bottom: -100px !important; /* Pulls the content below it up so you don't leave a blank gap */
+    margin-top: -150px !important
+}
+
+/* Ensures individual heading elements don't default align-left */
+.hero-copy-premium h2,
+.hero-copy-premium p,
+.hero-copy-premium .premium-eyebrow {
+    text-align: center !important;       /* Hard centers all headers and text paragraphs */
+    margin-left: auto !important;
+    margin-right: auto !important;
+    margin-top: 0 ;
+    display: block !important;
+}
+
+/* Balances your CTA link button row layout items */
+.hero-premium-buttons {
+    display: flex !important;
+    justify-content: center !important;  /* Centers button groupings horizontally */
+    align-items: center !important;
+    gap: 1rem !important;
+    width: 100% !important;
+    margin: 1rem auto !important;
+}
+/* ==========================================================================
+   DESKTOP ONLY: PUSH CONTENT UPWARD
+   ========================================================================== */
+@media (min-width: 969px) {
+    .hero-copy-premium {
+        /* This aggressively forces the text box upward on desktop screens */
+        margin-top: -200px !important; 
+    }
+
+    .hero-immersive-section {
+        /* Reduces padding space inside the banner area on desktop */
+        padding-top: 0 !important;
+    }
+}
+/* ==========================================================================
+   IMMERSIVE HERO LAYOUT REPAIR (Forces Display & Prevents Squishing)
+   ========================================================================== */
+.hero-immersive-section {
+  position: relative;
+  width: 100%;
+  /* Ensures adequate vertical room for your image and text to breathe */
+  min-height: 600px; 
+  height: 40vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  /* Top padding acts as a buffer zone so content isn't covered by your header navigation */
+  padding: 100px 24px 60px; 
+  box-sizing: border-box;
+}
+
+.hero-bg-media {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1; /* Locked in base background space */
+}
+
+.hero-bg-media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Forces image ratio compliance without cutting off dynamically */
+  object-position: center center;
+}
+
+.hero-bg-overlay-fade {
+  position: absolute;
+  inset: 0;
+  /* Premium blend layer from header base directly to global background color canvas */
+  background: linear-gradient(to bottom, rgba(249, 246, 255, 0.3) 0%, rgba(249, 246, 255, 0.6) 60%, var(--bg) 100%);
+  z-index: 2;
+}
+
+.dark-mode .hero-bg-overlay-fade {
+  background: linear-gradient(to bottom, rgba(16, 16, 24, 0.3) 0%, rgba(16, 16, 24, 0.6) 60%, var(--bg) 100%);
+}
+
+/* Force text block wrapper above layout overlays */
+.hero-premium-wrapper {
+  position: relative;
+  z-index: 10 !important; /* Forces copy visibility safely above gradient mask layers */
+  width: 100%;
+  max-width: 900px;
+  pointer-events: auto;
+}
+
+.hero-copy-premium {
+  text-align: center;
+  padding: 1rem;
+}
+
+.premium-eyebrow {
+  display: block;
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  color: var(--accent);
+  text-transform: uppercase;
+  margin-bottom: 1rem;
+}
+
+.hero-copy-premium h2 {
+  font-family: 'Montserrat', sans-serif;
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  font-weight: 800;
+  line-height: 1.15;
+  color: var(--text);
+  margin: 0 0 1.5rem;
+}
+
+.hero-copy-premium p {
+  font-size: 1.05rem;
+  line-height: 1.75;
+  color: var(--text);
+  opacity: 0.9;
+  margin-bottom: 2rem;
+}
+
+.hero-premium-buttons .cta-button-premium {
+  display: inline-flex;
+  padding: 0.9rem 2.2rem;
+  border-radius: 50px;
+  font-weight: 700;
+  text-decoration: none;
+  background: var(--accent);
+  color: #fff;
+  box-shadow: 0 8px 25px rgba(125, 111, 255, 0.25);
+  transition: transform 0.2s ease;
+}
+
+.hero-premium-buttons .cta-button-premium:hover {
+  transform: translateY(-2px);
+}
+
+/* Mobile responsive scaling backup rules */
+@media (max-width: 768px) {
+  .hero-immersive-section {
+    min-height: 540px;
+    height: auto;
+    padding-top: 120px;
+  }
+}
+
+/* ==========================================================================
+   SOLID CARD PUBMAT PLACEHOLDER ENGINE (Prepped for Image Implementation)
+   ========================================================================== */
+.program-pubmat-placeholder {
+  position: relative;
+  width: 100%;
+  height: 240px; /* Explicit structural height container block */
+  background: linear-gradient(135deg, rgba(125, 111, 255, 0.06) 0%, rgba(255, 178, 214, 0.1) 100%);
+  border-bottom: 1px solid var(--border);
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Empty State visual indicator layer */
+.pubmat-empty-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  text-align: center;
+  padding: 1rem;
+  z-index: 2;
+}
+
+.pubmat-icon {
+  font-size: 2.8rem;
+}
+
+.pubmat-text {
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+/* Image Element Layout Blueprint - Hide completely until an actual source link is assigned */
+.pubmat-target-img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 5;
+}
+
+/* Auto hide the empty placeholder contents if a valid picture path gets assigned */
+.pubmat-target-img[src=""], 
+.pubmat-target-img:not([src]) {
+  display: none;
+}
+/* ==========================================================================
+   FORCE SHOW REPAIRED HERO SYSTEM (Fixed Hidden Stack Bug)
+   ========================================================================== */
+.hero-immersive-section {
+  position: relative;
+  width: 100%;
+  min-height: 80vh;
+  height: auto;
+  display: grid;
+  grid-template-areas: "heroStack";
+  align-items: center;
+  justify-content: center;
+  padding: 140px 24px 80px; /* High top padding avoids sticky navbar overlap */
+  box-sizing: border-box;
+}
+
+.hero-bg-media {
+  grid-area: heroStack;
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+}
+
+.hero-bg-media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 30%;
+}
+
+.hero-bg-overlay-fade {
+  position: absolute;
+  inset: 0;
+  /* Multi-stage solid mask prevents image clipping and creates a smooth bleed */
+  background: linear-gradient(to bottom, 
+    rgba(249, 246, 255, 0.2) 0%, 
+    rgba(249, 246, 255, 0.7) 50%, 
+    var(--bg) 100%);
+  z-index: 2;
+}
+
+.dark-mode .hero-bg-overlay-fade {
+  background: linear-gradient(to bottom, 
+    rgba(16, 16, 24, 0.2) 0%, 
+    rgba(16, 16, 24, 0.7) 50%, 
+    var(--bg) 100%);
+}
+
+/* Explicit Foreground Stack Forced to Render Outermost Layer */
+.hero-content-layer {
+  grid-area: heroStack;
+  position: relative;
+  z-index: 9999 !important; /* Overrides any surrounding container clipping blocks */
+  width: 100%;
+  max-width: 850px;
+  margin: 0 auto;
+  pointer-events: auto;
+}
+
+.hero-copy-premium {
+  text-align: center;
+}
+
+.premium-eyebrow {
+  display: inline-block;
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  color: var(--accent);
+  background: rgba(125, 111, 255, 0.08);
+  padding: 0.4rem 1rem;
+  border-radius: 50px;
+  margin-bottom: 1.5rem;
+}
+
+.hero-copy-premium h2 {
+  font-family: 'Montserrat', sans-serif;
+  font-size: clamp(2.2rem, 6vw, 3.8rem);
+  font-weight: 800;
+  line-height: 1.1;
+  color: var(--text);
+  margin-bottom: 1.5rem;
+}
+
+.hero-copy-premium p {
+  font-size: 1.1rem;
+  line-height: 1.8;
+  color: var(--text);
+  opacity: 0.95;
+  margin-bottom: 2.5rem;
+}
+
+.cta-button-premium {
+  display: inline-flex;
+  padding: 1rem 2.5rem;
+  border-radius: 14px;
+  font-weight: 700;
+  text-decoration: none;
+  background: var(--text);
+  color: var(--bg);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+  transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.cta-button-premium:hover {
+  transform: translateY(-3px);
+}
+
+/* ==========================================================================
+   HIGH-END MODERN PROGRAM CARDS (Clean, Professional, Immersive Layouts)
+   ========================================================================== */
+.program-showcase-wrapper {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 4rem 2rem;
+}
+
+.program-modern-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+  gap: 3rem;
+}
+
+.program-premium-card {
+  display: flex;
+  flex-direction: column;
+  background: var(--surface-strong);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  overflow: hidden;
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s ease;
+}
+
+.program-premium-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 30px 60px rgba(94, 79, 148, 0.12);
+}
+
+/* Modernized Photo Header & Floating Label Systems */
+.program-pubmat-placeholder {
+  position: relative;
+  width: 100%;
+  height: 220px;
+  background: linear-gradient(45deg, rgba(125, 111, 255, 0.05), rgba(255, 178, 214, 0.08));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.card-floating-badge {
+  position: absolute;
+  top: 1.25rem;
+  left: 1.25rem;
+  z-index: 10;
+  font-size: 0.75rem;
+  font-weight: 700;
+  padding: 0.4rem 0.9rem;
+  border-radius: 50px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+}
+
+.status-active { background: #e6fdf5; color: #10b981; }
+.status-ongoing { background: #eff6ff; color: #3b82f6; }
+.status-funded { background: #faf5ff; color: #a855f7; }
+
+.dark-mode .status-active { background: rgba(16, 185, 129, 0.15); }
+.dark-mode .status-ongoing { background: rgba(59, 130, 246, 0.15); }
+.dark-mode .status-funded { background: rgba(168, 85, 247, 0.15); }
+
+.pubmat-target-img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 4;
+}
+
+.pubmat-target-img[src=""], .pubmat-target-img:not([src]) { display: none; }
+
+.pubmat-empty-state {
+  text-align: center;
+  z-index: 2;
+}
+
+.pubmat-text {
+  display: block;
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--muted);
+  letter-spacing: 0.05em;
+  margin-top: 0.25rem;
+}
+
+/* Body Content Alignment */
+.program-card-body-content {
+  padding: 2.25rem 2.25rem 1.5rem;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+.program-meta-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.program-category-tag {
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--accent);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.track-meta {
+  font-size: 0.8rem;
+  color: var(--muted);
+}
+
+.program-premium-card h3 {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin: 0 0 1rem;
+  color: var(--text);
+}
+
+.program-description-text {
+  font-size: 0.95rem;
+  line-height: 1.65;
+  color: var(--muted);
+  margin-bottom: 2rem;
+}
+
+/* Modern Pill Badges instead of heavy borders */
+.modern-pills-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: auto; /* Attaches neatly to base boundary line */
+}
+
+.focus-pill {
+  font-size: 0.75rem;
+  font-weight: 600;
+  background: var(--bg);
+  border: 1px solid var(--border);
+  color: var(--text);
+  padding: 0.35rem 0.75rem;
+  border-radius: 8px;
+}
+
+/* Footer Section Split Content layout */
+.program-card-footer {
+  padding: 1.5rem 2.25rem 2.25rem;
+  border-top: 1px solid var(--border);
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.target-sector-info small {
+  display: block;
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  color: var(--muted);
+  margin-bottom: 0.2rem;
+}
+
+.target-sector-info strong {
+  display: block;
+  font-size: 0.85rem;
+  color: var(--text);
+}
+
+.program-action-btn {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding: 1rem 1.25rem;
+  border-radius: 12px;
+  font-weight: 700;
+  font-size: 0.9rem;
+  text-decoration: none;
+  background: var(--accent);
+  color: #fff;
+  transition: background 0.2s, transform 0.2s;
+  box-sizing: border-box;
+}
+
+.program-action-btn:hover {
+  opacity: 0.95;
+  transform: translateY(-1px);
+}
+
+.program-action-btn.btn-secondary {
+  background: transparent;
+  color: var(--text);
+  border: 1px solid var(--border);
+}
+
+.program-action-btn.btn-secondary:hover {
+  background: var(--bg);
+}
+
+.btn-arrow {
+  transition: transform 0.2s ease;
+}
+
+.program-action-btn:hover .btn-arrow {
+  transform: translateX(4px);
+}
+/* ==========================================================================
+   FORCE FULL-SCREEN HERO BANNER (DEFIES ALL PARENT PADDING/MARGINS)
+   ========================================================================== */
+.program-hero-container {
+  position: relative;
+  /* Ultimate breakout force */
+  width: 100vw !important;
+  max-width: 100vw !important;
+  left: 50% !important;
+  transform: translateX(-50%) !important;
+  
+  min-height: 70vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  padding: 140px 24px 80px; 
+  box-sizing: border-box;
+  margin-top: 0 !important;
+  margin-bottom: 3rem;
+}
+
+/* Ensure the background layer fills the calculated breakout bounds */
+.program-hero-media-layer {
+  position: absolute;
+  top: 0 !important;
+  left: 0 !important;
+  width: 100vw !important;
+  height: 100% !important;
+  z-index: 1;
+}
+
+.program-hero-media-layer img {
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover !important;
+  object-position: center center;
+}
+.program-hero-overlay-fade {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to bottom, rgba(249, 246, 255, 0.2) 0%, rgba(249, 246, 255, 0.65) 50%, var(--bg) 100%);
+  z-index: 2;
+}
+
+.dark-mode .program-hero-overlay-fade {
+  background: linear-gradient(to bottom, rgba(16, 16, 24, 0.2) 0%, rgba(16, 16, 24, 0.65) 50%, var(--bg) 100%);
+}
+
+/* Explicit Content Stack Layer Forced to Render visible */
+.program-hero-content-layer {
+  position: relative;
+  z-index: 10 !important;
+  width: 100%;
+  max-width: 850px;
+  margin: 0 auto;
+}
+
+.program-hero-text-box {
+  text-align: center;
+}
+
+.program-hero-eyebrow {
+  display: inline-block;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  color: var(--accent);
+  background: rgba(125, 111, 255, 0.08);
+  padding: 0.4rem 1rem;
+  border-radius: 50px;
+  margin-bottom: 1.25rem;
+}
+
+.program-hero-text-box h2 {
+  font-family: 'Montserrat', sans-serif;
+  font-size: clamp(2.2rem, 5.5vw, 3.5rem);
+  font-weight: 800;
+  line-height: 1.15;
+  color: var(--text);
+  margin: 0 0 1.25rem 0;
+}
+
+.program-hero-text-box p {
+  font-size: 1.05rem;
+  line-height: 1.75;
+  color: var(--text);
+  opacity: 0.95;
+  margin: 0 0 2rem 0;
+}
+
+.program-hero-cta {
+  display: inline-flex;
+  padding: 0.95rem 2.25rem;
+  border-radius: 14px;
+  font-weight: 700;
+  text-decoration: none;
+  background: var(--text);
+  color: var(--bg);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.program-hero-cta:hover {
+  transform: translateY(-2px);
+}
+
+@media (max-width: 768px) {
+  .program-hero-container {
+    min-height: 520px;
+    padding-top: 110px;
+  }
+}
+
+/* ==========================================================================
+   MODERN & PROFESSIONAL CARD SYSTEM
+   ========================================================================== */
+.program-showcase-wrapper {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 3rem 1.5rem;
+}
+
+.program-modern-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(330px, 1fr));
+  gap: 2.5rem;
+}
+
+.program-premium-card {
+  display: flex;
+  flex-direction: column;
+  background: var(--surface-strong);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(94, 79, 148, 0.03);
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s ease;
+}
+
+.program-premium-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 25px 50px rgba(94, 79, 148, 0.1);
+}
+
+.program-pubmat-placeholder {
+  position: relative;
+  width: 100%;
+  height: 210px;
+  background: linear-gradient(135deg, rgba(125, 111, 255, 0.04), rgba(255, 178, 214, 0.06));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.card-floating-badge {
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+  z-index: 10;
+  font-size: 0.72rem;
+  font-weight: 700;
+  padding: 0.35rem 0.8rem;
+  border-radius: 50px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+}
+
+.status-active { background: #e6fdf5; color: #10b981; }
+.status-ongoing { background: #eff6ff; color: #3b82f6; }
+.status-funded { background: #faf5ff; color: #a855f7; }
+
+.dark-mode .status-active { background: rgba(16, 185, 129, 0.15); }
+.dark-mode .status-ongoing { background: rgba(59, 130, 246, 0.15); }
+.dark-mode .status-funded { background: rgba(168, 85, 247, 0.15); }
+
+.pubmat-target-img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 4;
+}
+.pubmat-target-img[src=""], .pubmat-target-img:not([src]) { display: none; }
+
+.pubmat-empty-state { text-align: center; z-index: 2; }
+.pubmat-text { display: block; font-size: 0.75rem; font-weight: 700; color: var(--muted); letter-spacing: 0.05em; margin-top: 0.25rem; }
+
+.program-card-body-content {
+  padding: 2rem 2rem 1.25rem;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+.program-meta-row { display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.75rem; }
+.program-category-tag { font-size: 0.75rem; font-weight: 700; color: var(--accent); text-transform: uppercase; }
+.track-meta { font-size: 0.78rem; color: var(--muted); }
+
+.program-premium-card h3 { font-family: 'Montserrat', sans-serif; font-size: 1.45rem; font-weight: 700; margin: 0 0 0.85rem; color: var(--text); }
+.program-description-text { font-size: 0.94rem; line-height: 1.6; color: var(--muted); margin-bottom: 1.75rem; }
+
+.modern-pills-container { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: auto; }
+.focus-pill { font-size: 0.72rem; font-weight: 600; background: var(--bg); border: 1px solid var(--border); color: var(--text); padding: 0.3rem 0.65rem; border-radius: 6px; }
+
+.program-card-footer { padding: 1.25rem 2rem 2rem; border-top: 1px solid var(--border); display: flex; flex-direction: column; gap: 1.25rem; }
+.target-sector-info small { display: block; font-size: 0.65rem; font-weight: 700; color: var(--muted); margin-bottom: 0.15rem; }
+.target-sector-info strong { display: block; font-size: 0.85rem; color: var(--text); }
+
+.program-action-btn {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding: 0.9rem 1.25rem;
+  border-radius: 12px;
+  font-weight: 700;
+  font-size: 0.88rem;
+  text-decoration: none;
+  background: var(--accent);
+  color: #fff;
+  transition: opacity 0.2s, transform 0.2s;
+  box-sizing: border-box;
+}
+.program-action-btn:hover { opacity: 0.95; transform: translateY(-1px); }
+.program-action-btn.btn-secondary { background: transparent; color: var(--text); border: 1px solid var(--border); }
+.program-action-btn.btn-secondary:hover { background: var(--bg); }
+.btn-arrow { transition: transform 0.2s ease; }
+.program-action-btn:hover .btn-arrow { transform: translateX(4px); }
+}
+/* ==========================================================================
+   FORCE FULL-SCREEN HERO BANNER (NO SIDE SPACES)
+   ========================================================================== */
+.program-hero-container {
+  position: relative;
+  /* Trick to force breakout of any side paddings or margins on the page */
+  width: 100vw !important;
+  left: 50% !important;
+  right: 50% !important;
+  margin-left: -50vw !important;
+  margin-right: -50vw !important;
+  
+  min-height: 70vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  padding: 140px 24px 80px; 
+  box-sizing: border-box;
+}
+
+.program-hero-media-layer {
+  position: absolute;
+  inset: 0;
+  width: 100% !important;
+  height: 100% !important;
+  z-index: 1;
+}
+
+.program-hero-media-layer img {
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover !important; /* Makes sure image stretches without stretching patterns distortion */
+  object-position: center center;
+  filter: brightness(0.25) contrast(1.1) saturate(0.8) !important;
+}
+/* ==========================================================================
+   COMPACT & PROFESSIONAL PROGRAM CARD LAYOUT (Reduced Inner Spacing)
+   ========================================================================== */
+
+/* 1. Tightened Card Body Content Area */
+.program-card-body-content {
+  padding: 1.25rem 1.25rem 0.75rem; /* Drastically reduced from 2rem */
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+/* 2. Meta Row Spacing (Category & Location Tag) */
+.program-meta-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.4rem; /* Snugs tightly against the title */
+}
+
+/* 3. Card Headings (Leadership Labs, Mobility Forums, etc.) */
+.program-premium-card h3 {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 1.35rem; /* Slightly balanced size for compactness */
+  font-weight: 700;
+  margin: 0 0 0.4rem 0; /* Minimal base margin to remove gaping holes */
+  color: var(--text);
+  line-height: 1.2;
+}
+
+/* 4. Description Paragraph Spacing */
+.program-description-text {
+  font-size: 0.9rem;
+  line-height: 1.5;
+  color: var(--muted);
+  margin: 0 0 1rem 0; /* Reduced bottom gap before the pill section */
+}
+
+/* 5. Feature Tag Pills Row */
+.modern-pills-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem; /* Tighter grouping for modern tags */
+  margin-top: auto; /* Keeps pinned neatly to the base of text area */
+}
+
+.focus-pill {
+  font-size: 0.7rem;
+  font-weight: 600;
+  background: var(--bg);
+  border: 1px solid var(--border);
+  color: var(--text);
+  padding: 0.25rem 0.55rem; /* Thinner padding */
+  border-radius: 6px;
+}
+
+/* ==========================================================================
+   COMPACT FOOTER SECTION
+   ========================================================================== */
+
+/* 6. Tightened Footer Container */
+.program-card-footer {
+  padding: 0.75rem 1.25rem 1.25rem; /* Scaled down inner space to balance the body */
+  border-top: 1px solid var(--border);
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem; /* Reduced space between target text and click button */
+}
+
+/* 7. Target Audience Information Text Blocks */
+.target-sector-info small {
+  display: block;
+  font-size: 0.62rem;
+  font-weight: 700;
+  color: var(--muted);
+  margin-bottom: 0.1rem; /* Closes gap to bold text */
+}
+
+.target-sector-info strong {
+  display: block;
+  font-size: 0.82rem;
+  color: var(--text);
+  line-height: 1.3;
+}
+
+/* 8. Action Button Inner Padding Fix */
+.program-action-btn {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding: 0.75rem 1.1rem; /* Sleeker, less chunky action buttons */
+  border-radius: 10px;
+  font-weight: 700;
+  font-size: 0.85rem;
+  text-decoration: none;
+  box-sizing: border-box;
+}
+
+/* ==========================================================================
+   RESPONSIVE MOBILE OVERRIDES
+   ========================================================================== */
+@media (max-width: 480px) {
+  .program-modern-grid {
+    gap: 1.5rem; /* Brings multiple cards closer together vertically on tiny phone viewports */
+  }
+
+  .program-card-body-content {
+    padding: 1rem 1rem 0.5rem; /* Aggressive space reduction for narrow mobile layouts */
+  }
+
+  .program-card-footer {
+    padding: 0.5rem 1rem 1rem;
+  }
+  
+  .program-pubmat-placeholder {
+    height: 170px; /* Scales down placeholder heights on mobile to make text visible higher up */
+  }
+}
+/* ==========================================================================
+   MODERN ARTICLES HEAD BANNER SYSTEM
+   ========================================================================== */
+.article-modern-banner {
+  position: relative;
+  border-radius: 32px;
+  margin: 10rem auto 2rem;
+  padding: 6rem 1rem;
+  text-align: center;
+  background: linear-gradient(135deg, #1e1b4b 0%, #312e81 100%);
+  overflow: hidden;
+  box-shadow: 0 20px 45px rgba(49, 46, 129, 0.15);
+}
+
+.banner-overlay-bg {
+  position: relative;
+  margin-top: none;
+  inset: 0;
+  background: radial-gradient(circle at top right, rgba(255, 178, 214, 0.25), transparent 50%),
+              radial-gradient(circle at bottom left, rgba(125, 111, 255, 0.3), transparent 60%);
+  z-index: 1;
+}
+
+.banner-content {
+  position: relative;
+  z-index: 2;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.banner-eyebrow {
+  display: inline-block;
+  font-family: 'Sora', sans-serif;
+  font-size: 0.85rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: #ffb2d6;
+  margin-bottom: 1rem;
+}
+
+.banner-content h1 {
+  font-family: 'Sora', sans-serif;
+  color: auto !important;
+  font-size: clamp(2.2rem, 5vw, 3.5rem);
+  font-weight: 800;
+  line-height: 1.15;
+  margin: 0 0 1.25rem 0;
+}
+
+.banner-content p {
+  font-family: 'Sora', sans-serif;
+  color: auto !important;
+  font-size: clamp(0.95rem, 2vw, 1.15rem);
+  line-height: 1.65;
+  margin: 0;
+}
+
+/* ==========================================================================
+   MODERN SEARCH BOX COMPONENT 
+   ========================================================================== */
+.search-section-wrapper {
+  max-width: 600px;
+  margin: 0 auto 3.5rem;
+  padding: 0 1rem;
+}
+
+.modern-search-box {
+  display: flex;
+  align-items: center;
+  background: var(--surface-strong);
+  border: 2px solid var(--border);
+  border-radius: 20px;
+  padding: 0.4rem 1.25rem;
+  box-shadow: 0 12px 30px rgba(94, 79, 148, 0.06);
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.modern-search-box:focus-within {
+  border-color: var(--accent);
+  box-shadow: 0 12px 35px rgba(125, 111, 255, 0.18);
+}
+
+.search-icon {
+  font-size: 1.2rem;
+  margin-right: 0.75rem;
+  user-select: none;
+}
+
+#article-search-input {
+  flex: 1;
+  border: none;
+  background: transparent;
+  padding: 0.8rem 0;
+  font-family: 'Sora', sans-serif;
+  font-size: 1rem;
+  color: var(--text);
+  outline: none;
+}
+
+#article-search-input::placeholder {
+  color: var(--muted);
+  opacity: 0.8;
+}
+
+/* ==========================================================================
+   STATE MANAGED ENTIRE FULL SCREEN REPORT PAGE VIEW
+   ========================================================================== */
+.report-screen-hidden {
+  display: none !important;
+}
+
+.report-screen-visible {
+  display: block !important;
+  min-height: 100vh;
+  padding: 6rem 2rem 5rem;
+  background: var(--bg);
+  animation: fadeInCanvas 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes fadeInCanvas {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Back navigation anchor link container rules */
+.report-nav-header {
+  max-width: 900px;
+  margin: 0 auto 1.5rem;
+}
+
+.back-navigation-btn {
+  background: var(--surface-strong);
+  color: var(--text);
+  border: 1px solid var(--border);
+  padding: 0.75rem 1.25rem;
+  border-radius: 14px;
+  font-family: 'Sora', sans-serif;
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  transition: background 0.2s, transform 0.2s, border-color 0.2s;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.03);
+}
+
+.back-navigation-btn:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+  background: rgba(125, 111, 255, 0.05);
+  transform: translateX(-2px);
+}
+
+/* Fullscreen Report Sheet Canvas Blueprint */
+.report-content-canvas {
+  max-width: 900px;
+  margin: 0 auto;
+  background: var(--surface-strong);
+  border: 1px solid var(--border);
+  border-radius: 32px;
+  box-shadow: 0 30px 70px rgba(24, 20, 48, 0.08);
+  overflow: hidden;
+}
+
+/* Gradient Mask fading overlay feature image container */
+.report-hero-cover {
+  position: relative;
+  width: 100%;
+  height: 380px;
+  background: #151423;
+}
+
+.report-hero-cover img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.report-fade-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to bottom, transparent 40%, var(--surface-strong) 100%);
+}
+
+/* Core Body Container */
+.report-inner-container {
+  padding: 3rem 4rem 4rem;
+}
+
+/* Centralized Bold Headlines */
+#report-headline-title {
+  font-family: 'Sora', sans-serif;
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 800;
+  text-align: center;
+  color: var(--text);
+  margin: 0 auto 2.5rem;
+  line-height: 1.2;
+  max-width: 800px;
+}
+
+/* Text alignment dynamic rules */
+.report-body-justified {
+  font-family: 'Sora', sans-serif;
+  font-size: 1.08rem;
+  line-height: 1.85;
+  color: var(--text);
+  text-align: justify;
+}
+
+.report-body-justified p {
+  margin-bottom: 1.5rem;
+}
+
+.report-body-justified h3 {
+  font-size: 1.4rem;
+  margin-top: 2.5rem;
+  margin-bottom: 1rem;
+  color: var(--accent);
+}
+
+/* Modernized Center Interactive Application Elements Container */
+.modern-action-box {
+  background: rgba(125, 111, 255, 0.06);
+  border-left: 5px solid var(--accent);
+  padding: 2rem;
+  border-radius: 18px;
+  margin: 2.5rem 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 1.25rem;
+}
+
+.modern-action-box p {
+  margin: 0;
+  font-weight: 600;
+  font-size: 1.1rem;
+}
+
+.modern-application-btn {
+  display: inline-flex;
+  background: linear-gradient(135deg, #7d6fff 0%, #ffb2d6 100%);
+  color: #ffffff !important;
+  padding: 0.95rem 2.5rem;
+  border-radius: 16px;
+  font-weight: 700;
+  text-decoration: none !important;
+  box-shadow: 0 10px 25px rgba(125, 111, 255, 0.25);
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.modern-application-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 14px 30px rgba(125, 111, 255, 0.35);
+}
+
+/* Clean Professional Document Metadata Row Footer Grid */
+.report-data-footer {
+  margin-top: 5rem;
+  padding-top: 2.5rem;
+  border-top: 1px solid var(--border);
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+}
+
+.footer-meta-block {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.footer-meta-block .meta-label {
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: var(--muted);
+  letter-spacing: 0.12em;
+}
+
+.footer-meta-block .meta-value {
+  font-size: 0.98rem;
+  font-weight: 600;
+  color: var(--text);
+}
+
+/* Media Query Responsiveness Fixes */
+@media (max-width: 768px) {
+  .report-screen-visible { padding: 5rem 1rem 4rem; }
+  .report-inner-container { padding: 2rem 1.5rem 2.5rem; }
+  .report-hero-cover { height: 240px; }
+  .report-data-footer { grid-template-columns: 1fr; gap: 1.25rem; }
+  .modern-action-box { padding: 1.5rem 1rem; }
+}

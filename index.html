@@ -33,35 +33,33 @@
       <button class="theme-toggle" type="button" aria-label="Switch to dark mode">
         <img class="theme-icon" src="moon-solid.png" alt="" width="22" height="22">
       </button>
-      <button class="join-btn join-header-btn">JOIN NOW</button>
-
+      <button class="join-header-btn" type="button">JOIN NOW</button>
     </div>
   </header>
 
   <main>
-    <section class="premium-matrix-gallery">
-      <div class="matrix-grid">
-        <div class="matrix-column">
-          <div class="matrix-slide active"><img src="https://via.placeholder.com/300x450/7d6fff/ffffff?text=Showcase+1A" alt="Advocacy"></div>
-          <div class="matrix-slide"><img src="https://via.placeholder.com/300x450/2e2a35/ffffff?text=Showcase+1B" alt="Advocacy Sub"></div>
-        </div>
-        <div class="matrix-column">
-          <div class="matrix-slide active"><img src="https://via.placeholder.com/300x450/ca8a04/ffffff?text=Showcase+2A" alt="Transit"></div>
-          <div class="matrix-slide"><img src="https://via.placeholder.com/300x450/595461/ffffff?text=Showcase+2B" alt="Transit Sub"></div>
-        </div>
-        <div class="matrix-column">
-          <div class="matrix-slide active"><img src="https://via.placeholder.com/300x450/0d9488/ffffff?text=Showcase+3A" alt="Governance"></div>
-          <div class="matrix-slide"><img src="https://via.placeholder.com/300x450/14b8a6/ffffff?text=Showcase+3B" alt="Governance Sub"></div>
-        </div>
-        <div class="matrix-column">
-          <div class="matrix-slide active"><img src="https://via.placeholder.com/300x450/ec4899/ffffff?text=Showcase+4A" alt="Mobilization"></div>
-          <div class="matrix-slide"><img src="https://via.placeholder.com/300x450/f43f5e/ffffff?text=Showcase+4B" alt="Mobilization Sub"></div>
-        </div>
+    <!-- Combined Hero Container with Fading Top Background Image -->
+    <section id="home" class="hero-immersive-section">
+      
+      <!-- The background image placeholder wrapper -->
+      <div class="hero-bg-media">
+        <!-- Replace this source with your actual image path later -->
+        <img src="tempbg.png" alt="Background Placeholder">
+        <div class="hero-bg-overlay-fade"></div>
       </div>
-    </section>
 
-    <section id="home" class="hero-section-premium">
+      <!-- The exact layout grid containing your original content -->
       <div class="hero-premium-wrapper">
+        
+        <!-- Matrix Thumbnails moved into the background layout flow, similar to your references -->
+        <div class="matrix-grid-compact">
+          <div class="matrix-column"><div class="matrix-slide active"><img src="https://via.placeholder.com/300x450/7d6fff/ffffff?text=Showcase+1A" alt="Advocacy"></div></div>
+          <div class="matrix-column"><div class="matrix-slide active"><img src="https://via.placeholder.com/300x450/ca8a04/ffffff?text=Showcase+2A" alt="Transit"></div></div>
+          <div class="matrix-column"><div class="matrix-slide active"><img src="https://via.placeholder.com/300x450/0d9488/ffffff?text=Showcase+3A" alt="Governance"></div></div>
+          <div class="matrix-column"><div class="matrix-slide active"><img src="https://via.placeholder.com/300x450/ec4899/ffffff?text=Showcase+4A" alt="Mobilization"></div></div>
+        </div>
+
+        <!-- Text content is completely stripped of its box constraints -->
         <div class="hero-copy-premium">
           <span class="premium-eyebrow">NATIONAL ALLIANCE FRAMEWORK</span>
           <h2>Empowering Next-Generation Leaders in Governance & Sustainable Mobility</h2>
@@ -69,7 +67,7 @@
             GOVMOB Youth (Governance and Mobility Youth Alliance) is the premier youth-led organization promoting active citizenship, civic policy literacy, structural transit advocacy, and collaborative local intervention. Through data-driven campaigns and rigorous institutional mentorship, we develop socially aware civic actors ready to influence local planning frameworks.
           </p>
           <div class="hero-premium-buttons">
-            <a href="index.html#join" class="cta-button-premium join-form">Secure Alliance Membership</a>
+            <a href="index.html#join" class="cta-button-premium join-form"><center>Want to Join? Apply Now!</center></a>
             <a href="about.html" class="cta-button-secondary-premium">Read Alliance Charter</a>
           </div>
         </div>
@@ -98,20 +96,17 @@
       <div class="section-content">
         <div class="vmo-grid-premium">
           <article class="vmo-card-premium">
-            <div class="vmo-icon">👁️‍🗨️</div>
-            <h3>VISION</h3>
+            <center><h3>VISION</h3>
             <p>An organized, socially conscious, and empowered youth sector actively shaping equitable, participatory, and sustainable social development and local municipal governance systems across the archipelago.</p>
-          </article>
+          </article></center>
           <article class="vmo-card-premium">
-            <div class="vmo-icon">🎯</div>
-            <h3>MISSION</h3>
+            <center><h3>MISSION</h3>
             <p>To mobilize youth through empirical data collection, technical policy writing, open education, and targeted street-level advocacy to influence progressive government accountability layouts.</p>
-          </article>
+          </article></center>
           <article class="vmo-card-premium">
-            <div class="vmo-icon">📊</div>
-            <h3>OBJECTIVES</h3>
+            <center><h3>OBJECTIVES</h3>
             <p>Establish permanent voting youth seats within urban transit boards, publish community-led public transport accessibility audits, and supply local sub-chapters with technical implementation micro-grants.</p>
-          </article>
+          </article></center>
         </div>
       </div>
     </section>
