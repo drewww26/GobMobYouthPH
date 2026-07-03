@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GovMob Youth - Admin Console</title>
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    .admin-container { max-width: 1000px; margin: 40px auto; padding: 20px; color: white; font-family: system-ui, sans-serif; }
+    .management-grid { display: grid; grid-template-columns: 1fr; gap: 30px; margin-top: 25px; }
+    @media (min-width: 768px) { .management-grid { grid-template-columns: 1fr 1fr; } }
+    
+    .panel-card { background: #1e293b; border: 1px solid #334155; padding: 24px; border-radius: 12px; margin-bottom: 25px; }
+    .panel-card h2 { margin-top: 0; font-size: 1.3rem; color: #f8fafc; margin-bottom: 15px; display: flex; align-items: center; gap: 8px; }
+    
+    .admin-form { display: flex; flex-direction: column; gap: 12px; }
+    .admin-form input, .admin-form select, .admin-form textarea { background: #0f172a; border: 1px solid #334155; padding: 12px; border-radius: 6px; color: white; font-size: 0.95rem; }
+    .admin-form textarea { resize: vertical; min-height: 80px; }
+    .admin-form input:focus, .admin-form select:focus, .admin-form textarea:focus { outline: 1px solid #7d6fff; }
+    
+    /* Modern Toggle Switch Styling */
+    .toggle-container { display: flex; align-items: center; gap: 12px; margin: 10px 0; }
+    .switch { position: relative; display: inline-block; width: 48px; height: 24px; }
+    .switch input { opacity: 0; width: 0; height: 0; }
+    .slider { position: absolute; cursor: pointer; top: 0; left: 0; right: 0; bottom: 0; background-color: #334155; transition: .3s; border-radius: 24px; }
+    .slider:before { position: absolute; content: ""; height: 18px; width: 18px; left: 3px; bottom: 3px; background-color: white; transition: .3s; border-radius: 50%; }
+    input:checked + .slider { background-color: #0d9488; }
+    input:checked + .slider:before { transform: translateX(24px); }
+    
+    .pub-btn { background: #0d9488; color: white; border: none; padding: 10px; border-radius: 6px; font-weight: 600; cursor: pointer; transition: background 0.2s; }
+    .pub-btn:hover { background: #0f766e; }
+    
+    .announcement-item, .article-mgmt-item { display: flex; justify-content: space-between; align-items: center; background: #0f172a; padding: 12px 16px; border-radius: 6px; margin-bottom: 8px; border-left: 3px solid #7d6fff; }
+    .announcement-item p, .article-mgmt-item p { margin: 0; font-size: 0.9rem; color: #cbd5e1; padding-right: 15px; }
+    .del-btn { background: #ef4444; color: white; border: none; padding: 4px 8px; border-radius: 4px; font-size: 0.8rem; cursor: pointer; }
+    .del-btn:hover { background: #dc2626; }
+    
+    .data-table { width: 100%; border-collapse: collapse; background: #1e293b; border-radius: 8px; overflow: hidden; }
+    .data-table th, .data-table td { padding: 14px 20px; text-align: left; border-bottom: 1px solid #334155; }
+    .data-table th { background: #0f172a; color: #94a3b8; font-weight: 600; font-size: 0.9rem; }
+    .badge { padding: 4px 10px; border-radius: 4px; font-size: 0.8rem; font-weight: 600; }
+    .badge.Administrator { background: #7d6fff; color: white; }
+    .back-home { color: #94a3b8; text-decoration: none; display: inline-block; margin-bottom: 20px; font-size: 0.9rem; }
+    .back-home:hover { color: #7d6fff; }
+  </style>
+</head>
+<body style="background: #0f172a;">
+
+  <div class="admin-container">
+    <a href="index.html" class="back-home">&larr; Return to Home Website</a>
+    <h1>Administrative Console</h1>
+    <p style="color: #94a3b8; margin-top: 4px;">Real-time management portal for GovMob Portal configurations.</p>
+    
+    <!-- 1. Media & Articles Publication Hub -->
+    <div class="panel-card">
+      <h2>📰 Media & Articles Publication Hub</h2>
+      <p style="color: #94a3b8; font-size: 0.9rem; margin-bottom: 20px;">Write and deploy articles or events directly to your live database website layout sections.</p>
+      
+      <form id="admin-article-form" class="admin-form" style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px;">
+        <div>
+          <label style="display:block; margin-bottom:6px; color:#94a3b8; font-size:0.85rem;">Headline / Title *</label>
+          <input type="text" id="pub-title" required placeholder="e.g., Mobility Forum Announcement" style="width:100%; box-sizing:border-box;">
+        </div>
+        <div>
+          <label style="display:block; margin-bottom:6px; color:#94a3b8; font-size:0.85rem;">Article Section Category *</label>
+          <select id="pub-section" required style="width:100%; box-sizing:border-box;">
+            <option value="announcements">Announcement Category</option>
+            <option value="events">Events Category</option>
+            <option value="articles">Featured Articles Category</option>
+          </select>
+        </div>
+        <div>
+          <label style="display:block; margin-bottom:6px; color:#94a3b8; font-size:0.85rem;">Author Designation Name *</label>
+          <input type="text" id="pub-author" required placeholder="e.g., Secretariat Office" style="width:100%; box-sizing:border-box;">
+        </div>
+        <div>
+          <label style="display:block; margin-bottom:6px; color:#94a3b8; font-size:0.85rem;">Publish Date Frame Label *</label>
+          <input type="text" id="pub-date" required placeholder="e.g., June 8, 2026" style="width:100%; box-sizing:border-box;">
+        </div>
+        <div style="grid-column: span 2;">
+          <label style="display:block; margin-bottom:6px; color:#94a3b8; font-size:0.85rem;">Extra Meta Tag Badge (e.g., Status, Location Pin) *</label>
+          <input type="text" id="pub-meta-extra" required placeholder="e.g., Registration: OPEN or Metro Manila Convention Center" style="width:100%; box-sizing:border-box;">
+        </div>
+        <div style="grid-column: span 2;">
+          <label style="display:block; margin-bottom:6px; color:#94a3b8; font-size:0.85rem;">Banner Card Image URL Reference</label>
+          <input type="url" id="pub-banner" placeholder="https://images.unsplash.com/photo-..." style="width:100%; box-sizing:border-box;">
+        </div>
+
+        <!-- NEW OPTIONAL BUTTON ACTION TOGGLE SYSTEM -->
+        <div style="grid-column: span 2; background: #0f172a; padding: 16px; border-radius: 8px; border: 1px solid #334155;">
+          <div class="toggle-container">
+            <label class="switch">
+              <input type="checkbox" id="pub-toggle-link">
+              <span class="slider"></span>
+            </label>
+            <div>
+              <span style="display: block; font-size: 0.95rem; font-weight: 600;">Include External Action Button?</span>
+              <span style="display: block; font-size: 0.8rem; color: #94a3b8;">Turn on to append a Registration or external reference redirect button to this post.</span>
+            </div>
+          </div>
+          
+          <div id="link-input-wrapper" style="display: none; margin-top: 14px;">
+            <label style="display:block; margin-bottom:6px; color:#94a3b8; font-size:0.85rem;">Action Button Redirect URL *</label>
+            <input type="url" id="pub-action-link" placeholder="https://forms.gle/... or https://example.com" style="width:100%; box-sizing:border-box;">
+          </div>
+        </div>
+
+        <div style="grid-column: span 2;">
+          <label style="display:block; margin-bottom:6px; color:#94a3b8; font-size:0.85rem;">Card Grid Summary Paragraph Text *</label>
+          <textarea id="pub-summary" required rows="2" placeholder="Enter clean snippet summary shown on index collection lists..." style="width:100%; box-sizing:border-box;"></textarea>
+        </div>
+        <div style="grid-column: span 2;">
+          <label style="display:block; margin-bottom:6px; color:#94a3b8; font-size:0.85rem;">Full Canvas Document Report Content (Supports standard HTML elements) *</label>
+          <textarea id="pub-body" required rows="6" placeholder="&lt;p&gt;Detailed body contents go here...&lt;/p&gt;&lt;h3&gt;Subheadings&lt;/h3&gt;" style="width:100%; box-sizing:border-box;"></textarea>
+        </div>
+        <div style="grid-column: span 2; text-align: right;">
+          <button type="submit" class="pub-btn" style="padding: 12px 30px;">Deploy & Publish Material Live</button>
+        </div>
+      </form>
+
+      <hr style="border: 0; border-top: 1px solid #334155; margin: 30px 0;">
+      <h3>Active Managed Article Listings</h3>
+      <div id="admin-articles-list" style="display: grid; gap: 10px; margin-top: 15px;">
+        <p style="color: #94a3b8; font-size: 0.9rem;">Loading catalog systems...</p>
+      </div>
+    </div>
+
+    <!-- 2. Original Layout Boxes Grid -->
+    <div class="management-grid">
+      <div class="panel-card">
+        <h2>📢 Announcement Broadcast Manager</h2>
+        <form id="announcement-form" class="admin-form">
+          <textarea id="announcement-text" placeholder="Type out your critical website alert or announcement text here..." required></textarea>
+          <button type="submit" class="pub-btn">Publish Broadcast Alert</button>
+        </form>
+        <hr style="border: 0; border-top: 1px solid #334155; margin: 20px 0;">
+        <h3>Active Broadcasts</h3>
+        <div id="announcements-list">
+          <p style="color: #94a3b8; font-size: 0.9rem;">Loading dashboard broadcasts...</p>
+        </div>
+      </div>
+
+      <div class="panel-card">
+        <h2>👥 User & Member Directory</h2>
+        <table class="data-table">
+          <thead>
+            <tr>
+              <th>User Email</th>
+              <th>Assigned Role</th>
+            </tr>
+          </thead>
+          <tbody id="users-table-body">
+            <tr>
+              <td colspan="2" style="text-align: center; color: #94a3b8;">Loading administrative data...</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
+    import { getAuth, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-auth.js";
+    import { getFirestore, doc, getDoc, collection, addDoc, getDocs, deleteDoc, onSnapshot } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
+
+    const firebaseConfig = {
+      apiKey: "AIzaSyCvu4PhDb_9TsijzlL4Hy9s2gXyhevv264",
+      authDomain: "govmob-portal.firebaseapp.com",
+      projectId: "govmob-portal",
+      storageBucket: "govmob-portal.firebasestorage.app",
+      messagingSenderId: "15495270960",
+      appId: "1:15495270960:web:acde6f3e78d3b7982f93f5",
+      measurementId: "G-LCE5NWSDVB"
+    };
+
+    const app = initializeApp(firebaseConfig);
+    const auth = getAuth(app);
+    const db = getFirestore(app);
+
+    // Toggle Input Visibility Management Logic
+    const linkToggle = document.getElementById('pub-toggle-link');
+    const linkWrapper = document.getElementById('link-input-wrapper');
+    const linkInput = document.getElementById('pub-action-link');
+
+    linkToggle.addEventListener('change', () => {
+      if (linkToggle.checked) {
+        linkWrapper.style.display = 'block';
+        linkInput.required = true;
+      } else {
+        linkWrapper.style.display = 'none';
+        linkInput.required = false;
+        linkInput.value = '';
+      }
+    });
+
+    // Dynamic Auth Stream Validation Engine
+    onAuthStateChanged(auth, async (user) => {
+      if (!user) {
+        console.warn("No active authenticated account session matching browser records.");
+        return;
+      }
+      const userDoc = await getDoc(doc(db, "users", user.uid));
+      if (!userDoc.exists() || userDoc.data().role !== "Administrator") {
+        console.warn("Administrative Clearance verification missing inside directory roles mapping.");
+        return;
+      }
+      
+      loadUserDirectory();
+      listenToAnnouncements();
+      listenToArticles();
+    });
+
+    // Handle Article Submission
+    document.getElementById('admin-article-form').addEventListener('submit', async (e) => {
+      e.preventDefault();
+      
+      const title = document.getElementById('pub-title').value.trim();
+      const type = document.getElementById('pub-section').value;
+      const author = document.getElementById('pub-author').value.trim();
+      const date = document.getElementById('pub-date').value.trim();
+      const metaExtra = document.getElementById('pub-meta-extra').value.trim();
+      const bannerImage = document.getElementById('pub-banner').value.trim() || 'https://images.unsplash.com/photo-1517486808906-6ca8b3f04846?auto=format&fit=crop&q=80&w=1200';
+      const summary = document.getElementById('pub-summary').value.trim();
+      const body = document.getElementById('pub-body').value.trim();
+      
+      // Capturing Toggle Button Parameters
+      const hasLink = linkToggle.checked;
+      const actionLink = hasLink ? linkInput.value.trim() : "";
+
+      try {
+        await addDoc(collection(db, "articles"), {
+          title, type, author, date, metaExtra, bannerImage, summary, body,
+          hasLink, actionLink,
+          timestamp: new Date().toISOString()
+        });
+        alert("Publication successfully deployed live!");
+        document.getElementById('admin-article-form').reset();
+        linkWrapper.style.display = 'none'; // reset visual wrapper state
+      } catch (err) {
+        alert("Error saving publication text payload: " + err.message);
+      }
+    });
+
+    // Real-time Articles Listener
+    function listenToArticles() {
+      const list = document.getElementById('admin-articles-list');
+      onSnapshot(collection(db, "articles"), (snap) => {
+        if (snap.empty) {
+          list.innerHTML = `<p style="color: #94a3b8; font-size: 0.9rem;">No articles catalog entries found.</p>`;
+          return;
+        }
+        list.innerHTML = "";
+        snap.forEach((docSnap) => {
+          const data = docSnap.data();
+          const item = document.createElement('div');
+          item.className = 'article-mgmt-item';
+          
+          // Visual Indicator badge if a post includes an external registration link
+          const linkBadge = data.hasLink ? ` <span style="color: #0d9488; font-size: 0.75rem; margin-left: 5px;">[🔗 Action Link Active]</span>` : '';
+          
+          item.innerHTML = `
+            <p><strong>[${data.type.toUpperCase()}]</strong> ${data.title}${linkBadge}</p>
+            <button class="del-btn" data-id="${docSnap.id}">Delete</button>
+          `;
+          list.appendChild(item);
+        });
+
+        document.querySelectorAll('#admin-articles-list .del-btn').forEach(btn => {
+          btn.addEventListener('click', async (e) => {
+            if(confirm("Confirm deletion of this dynamic publication card?")) {
+              await deleteDoc(doc(db, "articles", e.target.dataset.id));
+            }
+          });
+        });
+      });
+    }
+
+    // Original Broadcast Elements Handling
+    document.getElementById('announcement-form').addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const txtInput = document.getElementById('announcement-text');
+      try {
+        await addDoc(collection(db, "announcements"), { message: txtInput.value, timestamp: new Date().toISOString() });
+        txtInput.value = "";
+      } catch (err) { alert("Error: " + err.message); }
+    });
+
+    function listenToAnnouncements() {
+      const list = document.getElementById('announcements-list');
+      onSnapshot(collection(db, "announcements"), (snap) => {
+        if (snap.empty) { list.innerHTML = `<p style="color:#94a3b8; font-size:0.9rem;">No active alerts.</p>`; return; }
+        list.innerHTML = "";
+        snap.forEach((docSnap) => {
+          const item = document.createElement('div');
+          item.className = 'announcement-item';
+          item.innerHTML = `<p>${docSnap.data().message}</p><button class="del-btn" data-id="${docSnap.id}">Delete</button>`;
+          list.appendChild(item);
+        });
+        document.querySelectorAll('#announcements-list .del-btn').forEach(btn => {
+          btn.addEventListener('click', async (e) => { await deleteDoc(doc(db, "announcements", e.target.dataset.id)); });
+        });
+      });
+    }
+
+    async function loadUserDirectory() {
+      const tbody = document.getElementById('users-table-body');
+      try {
+        const querySnapshot = await getDocs(collection(db, "users"));
+        tbody.innerHTML = ""; 
+        querySnapshot.forEach((docSnap) => {
+          const data = docSnap.data();
+          tbody.innerHTML += `<tr><td>${data.email}</td><td><span class="badge Administrator">${data.role}</span></td></tr>`;
+        });
+      } catch (err) { tbody.innerHTML = `<tr><td colspan="2" style="color:#f87171; text-align:center;">Directory connection offline.</td></tr>`; }
+    }
+  </script>
+</body>
+</html>

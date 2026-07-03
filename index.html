@@ -28,12 +28,15 @@
       <a href="constitution.html">CONSTITUTION & BY-LAWS</a>
       <a href="articles.html">ARTICLES</a>
       <a href="contact.html">CONTACT US</a>
+      <span id="admin-nav-container"></span>
     </nav>
     <div class="header-actions">
       <button class="theme-toggle" type="button" aria-label="Switch to dark mode">
         <img class="theme-icon" src="moon-solid.png" alt="" width="22" height="22">
       </button>
-      <button class="join-header-btn" type="button">JOIN NOW</button>
+      <div id="auth-btn-container">
+  <!-- JavaScript dynamically handles layout contents here -->
+  <button id="join-now-btn" class="nav-btn join-now">JOIN NOW</button>
     </div>
   </header>
 
@@ -898,5 +901,59 @@
       });
     });
 </script>
+<div id="auth-modal" class="modal-overlay">
+  <div class="modal-card">
+    <button id="close-modal" class="close-x">&times;</button>
+    <h2 id="form-title">Sign In</h2>
+    <p id="error-message" class="error-text"></p>
+
+<!-- ========================================== -->
+<!-- ANNOUNCEMENT MODAL: Add right below your Auth Modal -->
+<!-- ========================================== -->
+<div id="announcement-modal" class="modal-overlay">
+  <div class="modal-card announcement-card">
+    <div class="announcement-badge">SYSTEM BROADCAST</div>
+    <h2 style="margin-top: 10px; font-size: 1.4rem;">Notice Board Update</h2>
+    <p id="announcement-content-text" class="announcement-body-text"></p>
+    <button id="close-announcement-btn" class="submit-action-btn pulse-accent">Understood & Clear</button>
+  </div>
+</div>
+
+    <form id="auth-form">
+      <div class="input-group">
+        <label for="auth-email">Email Address</label>
+        <input type="email" id="auth-email" required placeholder="name@domain.com">
+      </div>
+      
+      <div class="input-group">
+        <label for="auth-password">Password</label>
+        <input type="password" id="auth-password" required placeholder="••••••••">
+      </div>
+      
+      <div id="role-select-container" class="input-group" style="display: none;">
+        <label for="account-role">Account Type</label>
+        <select id="account-role">
+          <option value="User">User</option>
+          <option value="Member">Member</option>
+          <option value="Officer">Officer</option>
+          <option value="Administrator">Administrator</option>
+        </select>
+      </div>
+      
+      <div id="pin-container" class="input-group" style="display: none;">
+        <label for="auth-pin">Security Gateway PIN</label>
+        <input type="password" id="auth-pin" placeholder="Enter Role Access PIN">
+      </div>
+      
+      <button type="submit" id="submit-btn" class="submit-action-btn">Sign In</button>
+    </form>
+    
+    <p id="toggle-mode-link" class="switch-mode-prompt">Don't have an account? <span class="highlight">Sign Up</span></p>
+  </div>
+</div>
+
+<!-- Tie together your app logic with module typing -->
+<script type="module" src="app.js"></script>
+ <script type="module" src="auth-global.js"></script>
 </body>
 </html>

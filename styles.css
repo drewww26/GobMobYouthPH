@@ -6492,3 +6492,277 @@ section {
   .report-data-footer { grid-template-columns: 1fr; gap: 1.25rem; }
   .modern-action-box { padding: 1.5rem 1rem; }
 }
+/* --- Authentication Layout Components --- */
+#auth-btn-container {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+.user-welcome {
+  color: #f3f4f6;
+  font-size: 0.9rem;
+}
+.user-welcome strong {
+  color: #7d6fff;
+}
+.nav-btn {
+  padding: 8px 18px;
+  border-radius: 6px;
+  font-weight: 6px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  border: none;
+}
+.join-now { background-color: #0d9488; color: white; }
+.join-now:hover { background-color: #0f766e; }
+.logout { background-color: #ef4444; color: white; }
+.logout:hover { background-color: #dc2626; }
+.admin-link { background-color: #7d6fff; color: white; text-decoration: none; font-size: 0.9rem; }
+.admin-link:hover { background-color: #6355e6; }
+
+/* --- Overlay Canvas Display --- */
+.modal-overlay {
+  position: fixed;
+  top: 0; left: 0; width: 100%; height: 100%;
+  background: rgba(15, 23, 42, 0.85);
+  backdrop-filter: blur(4px);
+  display: flex; align-items: center; justify-content: center;
+  z-index: 9999;
+  opacity: 0; pointer-events: none;
+  transition: opacity 0.3s ease;
+}
+.modal-overlay.active { opacity: 1; pointer-events: auto; }
+.modal-card {
+  background: #1e293b;
+  border: 1px solid #334155;
+  padding: 30px; border-radius: 12px;
+  width: 100%; max-width: 420px;
+  position: relative;
+  box-shadow: 0 20px 25px -5px rgba(0,0,0,0.5);
+}
+.close-x {
+  position: absolute; top: 15px; right: 20px;
+  background: none; border: none; color: #94a3b8;
+  font-size: 1.8rem; cursor: pointer;
+}
+.close-x:hover { color: #f8fafc; }
+.modal-card h2 { color: #fff; margin-bottom: 20px; font-size: 1.6rem; }
+
+/* --- Input Fields & Inner Elements --- */
+.input-group { margin-bottom: 18px; display: flex; flex-direction: column; text-align: left;}
+.input-group label { color: #94a3b8; font-size: 0.85rem; margin-bottom: 6px; }
+.input-group input, .input-group select {
+  background: #0f172a; border: 1px solid #334155;
+  padding: 10px; border-radius: 6px; color: #fff; font-size: 0.95rem;
+}
+.input-group input:focus, .input-group select:focus { outline: 1px solid #7d6fff; }
+.submit-action-btn {
+  width: 100%; background: #7d6fff; color: white;
+  padding: 12px; border-radius: 6px; font-weight: 600;
+  border: none; cursor: pointer; margin-top: 10px;
+}
+.submit-action-btn:hover { background: #6355e6; }
+.switch-mode-prompt { color: #94a3b8; margin-top: 20px; font-size: 0.85rem; text-align: center; }
+.switch-mode-prompt .highlight { color: #7d6fff; cursor: pointer; font-weight: 600; }
+.error-text { color: #f87171; font-size: 0.85rem; margin-bottom: 15px; font-weight: 500; }
+/* --- Micro Profile Badge Structure --- */
+.profile-dropdown-wrapper {
+  position: relative;
+  display: inline-block;
+}
+
+.profile-badge {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: #7d6fff;
+  color: white;
+  font-weight: 700;
+  font-size: 1.1rem;
+  border: 2px solid #334155;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.2s ease, border-color 0.2s ease;
+}
+
+.profile-badge:hover {
+  border-color: #7d6fff;
+  transform: scale(1.05);
+}
+
+/* --- The Dropdown Box Layout --- */
+.profile-dropdown {
+  position: absolute;
+  right: 0;
+  top: 50px;
+  background: #1e293b;
+  border: 1px solid #334155;
+  width: 240px;
+  border-radius: 8px;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.3);
+  padding: 12px 0;
+  z-index: 1000;
+  display: none; /* Controlled via JS toggle */
+}
+
+.profile-dropdown.show {
+  display: block;
+}
+
+.dropdown-header {
+  padding: 4px 16px;
+}
+
+.dropdown-email {
+  color: #f8fafc;
+  font-size: 0.85rem;
+  font-weight: 600;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  margin: 0;
+}
+
+.dropdown-role {
+  color: #94a3b8;
+  font-size: 0.75rem;
+  margin-top: 2px;
+  margin-bottom: 0;
+}
+
+.dropdown-divider {
+  border: 0;
+  border-top: 1px solid #334155;
+  margin: 8px 0;
+}
+
+.dropdown-item {
+  width: 100%;
+  padding: 10px 16px;
+  text-align: left;
+  background: none;
+  border: none;
+  font-size: 0.9rem;
+  cursor: pointer;
+  display: block;
+}
+
+.logout-item {
+  color: #f87171;
+  font-weight: 500;
+}
+
+.logout-item:hover {
+  background: #2d3748;
+}
+
+/* --- Inline Admin Nav Link Styling --- */
+.admin-nav-item {
+  color: #7d6fff !important; /* Forces your primary theme emphasis color */
+  font-weight: bold;
+}
+/* --- Premium Responsive Gradient Log In Button --- */
+.premium-login-btn {
+  background: linear-gradient(135deg, #7d6fff 0%, #0d9488 100%);
+  color: #ffffff;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  border: none;
+  padding: 10px 24px;
+  border-radius: 30px; /* Gives it a modern, pill-shaped edge */
+  box-shadow: 0 4px 14px rgba(125, 111, 255, 0.25);
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+}
+
+.premium-login-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(13, 148, 136, 0.4);
+  background: linear-gradient(135deg, #8c7eff 0%, #0f766e 100%);
+}
+
+.premium-login-btn:active {
+  transform: translateY(0);
+}
+
+/* --- Welcome Greetings Toast Window Layout --- */
+.welcome-toast {
+  position: fixed;
+  bottom: -100px; /* Starts completely hidden out of view */
+  right: 24px;
+  background: #1e293b;
+  border: 1px solid #334155;
+  border-left: 4px solid #7d6fff; /* Accents the brand core tint */
+  padding: 16px 20px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.5);
+  z-index: 10000;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  max-width: 360px;
+}
+
+.welcome-toast.show {
+  bottom: 24px; /* Pulls cleanly upward into workspace view */
+}
+
+.toast-icon {
+  font-size: 1.6rem;
+}
+
+.toast-body h3 {
+  margin: 0;
+  color: #ffffff;
+  font-size: 0.95rem;
+  font-weight: 600;
+}
+
+.toast-body p {
+  margin: 4px 0 0 0;
+  color: #94a3b8;
+  font-size: 0.8rem;
+}
+
+.toast-body strong {
+  color: #0d9488;
+}
+
+/* Adjust layout on smaller mobile screens */
+@media (max-width: 480px) {
+  .welcome-toast {
+    right: 16px;
+    left: 16px;
+    max-width: calc(100% - 32px);
+  }
+}
+.action-redirect-btn {
+  display: inline-block;
+  background: linear-gradient(135deg, #0d9488 0%, #0f766e 100%);
+  color: #ffffff;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 1rem;
+  padding: 14px 32px;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  transition: all 0.2s ease-in-out;
+}
+
+.action-redirect-btn:hover {
+  background: linear-gradient(135deg, #0f766e 0%, #115e59 100%);
+  transform: translateY(-2px);
+  box-shadow: 0 10px 15px -3px rgba(13, 148, 136, 0.3);
+}
+
+.action-redirect-btn:active {
+  transform: translateY(0);
+}
