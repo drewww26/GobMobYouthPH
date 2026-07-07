@@ -8,6 +8,19 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css" />
+  <style>
+    /* Custom layout fixes for cards and reports that have NO image banner */
+    .article-horizontal-card.no-image-layout button {
+      display: block !important;
+    }
+    .article-horizontal-card.no-image-layout .article-card-body {
+      width: 100% !important;
+      padding: 24px !important;
+    }
+    .report-inner-container.no-banner-padding {
+      margin-top: 40px !important;
+    }
+  </style>
 </head>
 <body>
   <header class="site-header">
@@ -28,12 +41,15 @@
       <a href="constitution.html">CONSTITUTION & BY-LAWS</a>
       <a href="articles.html">ARTICLES</a>
       <a href="contact.html">CONTACT US</a>
+      <span id="admin-nav-container"></span>
     </nav>
     <div class="header-actions">
       <button class="theme-toggle" type="button" aria-label="Switch to dark mode">
-        <img class="theme-icon" src="moon-solid.png" alt="Theme icon" width="22" height="22">
+        <img class="theme-icon" src="moon-solid.png" alt="" width="22" height="22">
       </button>
-      <button class="join-header-btn" type="button">JOIN NOW</button>
+      <div id="auth-btn-container">
+  <!-- JavaScript dynamically handles layout contents here -->
+  <button id="join-now-btn" class="nav-btn join-now">JOIN NOW</button>
     </div>
   </header>
 
@@ -154,13 +170,13 @@
 
     <article class="report-content-canvas">
       <!-- Feature Visual Header with Gradient Fading Layer -->
-      <div class="report-hero-cover">
+      <div class="report-hero-cover" id="report-hero-cover-container">
         <img id="report-img-placeholder" src="https://images.unsplash.com/photo-1517486808906-6ca8b3f04846?auto=format&fit=crop&q=80&w=1200" alt="Report Banner Background">
         <div class="report-fade-overlay"></div>
       </div>
 
       <!-- Core Text Assembly -->
-      <div class="report-inner-container">
+      <div class="report-inner-container" id="report-inner-container-element">
         <h1 id="report-headline-title">Headlines Title</h1>
         
         <div id="report-body-content" class="report-body-justified">
@@ -229,6 +245,7 @@
     <a href="accomplishments.html" class="mb-more-link"><img src="./trophy-solid.png" alt=""><span>Accomplishments</span></a>
     <a href="constitution.html" class="mb-more-link"><img src="./book-solid.png" alt=""><span>Constitution</span></a>
     <a href="articles.html" class="mb-more-link"><img src="./book-solid.png" alt=""><span>Articles</span></a>
+    <a href="admin.html" class="mb-more-link"><img src="./circle-info-solid.png"><span>Admin</span></a>
   </div>
 
   <!-- Message Widget -->
@@ -302,6 +319,8 @@
       const reportDateField = document.getElementById('report-date-field');
       const reportPlaceField = document.getElementById('report-place-field');
       const reportImgPlaceholder = document.getElementById('report-img-placeholder');
+      const reportHeroCover = document.getElementById('report-hero-cover-container');
+      const reportInnerContainer = document.getElementById('report-inner-container-element');
 
       // Realtime Database Synchronization Engine Loader
       function listenToLivePublications() {
@@ -334,12 +353,21 @@
             // Clean dynamic text fields safely to protect layout formatting
             const cleanTitle = (item.title || "").replace(/"/g, '&quot;');
             
+            // CHECK IF THE BANNER IS TURNED ON IN THE ADMIN PANEL
+            const hasBannerImage = item.hasBanner !== false && item.bannerImage && item.bannerImage !== 'none';
+            
+            // Render image container only if banner flag is true
+            const imageMarkup = hasBannerImage 
+              ? `<div class="card-image-left" style="background-image: url('${item.bannerImage}'); background-size: cover; background-position: center;"></div>`
+              : '';
+              
+            // Add a modifier class name if the card has no image
+            const noImageClass = hasBannerImage ? '' : 'no-image-layout';
+
             const cardHTML = `
-              <article class="news-card article-horizontal-card" data-search-title="${cleanTitle}">
+              <article class="news-card article-horizontal-card ${noImageClass}" data-search-title="${cleanTitle}">
                 <button type="button" data-article-id="${id}">
-                  <div class="card-image-left" style="background-image: url('${item.bannerImage}'); background-size: cover; background-position: center;">
-                    ${!item.bannerImage ? '<span>Image Placeholder</span>' : ''}
-                  </div>
+                  ${imageMarkup}
                   <div class="article-card-body">
                     <div class="article-card-meta">
                       <span class="page-badge badge-${badgeClass}">${badgeLabel}</span>
@@ -428,8 +456,14 @@
         reportDateField.textContent = report.date || 'Regular Update';
         reportPlaceField.textContent = report.metaExtra || 'Metro Manila, PH';
         
-        if (report.bannerImage) {
+        // HIDE OR SHOW TOP BANNER DISPLAYS INSIDE DETAILED VIEW SCREENS
+        if (report.hasBanner !== false && report.bannerImage && report.bannerImage !== 'none') {
           reportImgPlaceholder.src = report.bannerImage;
+          if (reportHeroCover) reportHeroCover.style.display = 'block';
+          if (reportInnerContainer) reportInnerContainer.classList.remove('no-banner-padding');
+        } else {
+          if (reportHeroCover) reportHeroCover.style.display = 'none';
+          if (reportInnerContainer) reportInnerContainer.classList.add('no-banner-padding');
         }
 
         // Switch System View States
@@ -733,5 +767,7 @@
       });
     });
   </script>
+  <script type="module" src="app.js"></script>
+ <script type="module" src="auth-global.js"></script>
 </body>
 </html>

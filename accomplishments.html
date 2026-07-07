@@ -318,12 +318,15 @@
       <a href="constitution.html">CONSTITUTION & BY-LAWS</a>
       <a href="articles.html">ARTICLES</a>
       <a href="contact.html">CONTACT US</a>
+      <span id="admin-nav-container"></span>
     </nav>
     <div class="header-actions">
       <button class="theme-toggle" type="button" aria-label="Switch to dark mode">
         <img class="theme-icon" src="moon-solid.png" alt="" width="22" height="22">
       </button>
-      <button class="join-header-btn" type="button">JOIN NOW</button>
+      <div id="auth-btn-container">
+  <!-- JavaScript dynamically handles layout contents here -->
+  <button id="join-now-btn" class="nav-btn join-now">JOIN NOW</button>
     </div>
   </header>
 
@@ -577,6 +580,7 @@
     <a href="accomplishments.html" class="mb-more-link"><img src="./trophy-solid.png" alt="Accomplishments"><span>Accomplishments</span></a>
     <a href="constitution.html" class="mb-more-link"><img src="./book-solid.png" alt="Constitution & By-Laws"><span>Constitution & By-Laws</span></a>
     <a href="articles.html" class="mb-more-link"><img src="./book-solid.png" alt="Articles"><span>Articles</span></a>
+    <a href="admin.html" class="mb-more-link"><img src="./circle-info-solid.png"><span>Admin</span></a>
   </div>
 
   <div class="message-widget">
@@ -793,5 +797,7 @@
       applyTheme(localStorage.getItem('govmob-theme') || 'light');
     })();
   </script>
+  <script type="module" src="app.js"></script>
+ <script type="module" src="auth-global.js"></script>
 </body>
 </html>

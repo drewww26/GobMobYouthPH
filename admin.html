@@ -6,45 +6,98 @@
   <title>GovMob Youth - Admin Console</title>
   <link rel="stylesheet" href="styles.css">
   <style>
-    .admin-container { max-width: 1000px; margin: 40px auto; padding: 20px; color: white; font-family: system-ui, sans-serif; }
-    .management-grid { display: grid; grid-template-columns: 1fr; gap: 30px; margin-top: 25px; }
-    @media (min-width: 768px) { .management-grid { grid-template-columns: 1fr 1fr; } }
+    .admin-container { max-width: 1000px; margin: 20px auto; padding: 16px; color: white; font-family: system-ui, sans-serif; box-sizing: border-box; }
+    @media (min-width: 768px) { .admin-container { margin: 40px auto; padding: 20px; } }
+
+    .management-grid { display: grid; grid-template-columns: 1fr; gap: 20px; margin-top: 25px; }
+    @media (min-width: 768px) { .management-grid { grid-template-columns: 1fr 1fr; gap: 30px; } }
     
-    .panel-card { background: #1e293b; border: 1px solid #334155; padding: 24px; border-radius: 12px; margin-bottom: 25px; }
-    .panel-card h2 { margin-top: 0; font-size: 1.3rem; color: #f8fafc; margin-bottom: 15px; display: flex; align-items: center; gap: 8px; }
+    .panel-card { background: #1e293b; border: 1px solid #334155; padding: 16px; border-radius: 12px; margin-bottom: 20px; box-sizing: border-box; }
+    @media (min-width: 768px) { .panel-card { padding: 24px; margin-bottom: 25px; } }
+    
+    .panel-card h2 { margin-top: 0; font-size: 1.2rem; color: #f8fafc; margin-bottom: 15px; display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+    @media (min-width: 768px) { .panel-card h2 { font-size: 1.3rem; } }
     
     .admin-form { display: flex; flex-direction: column; gap: 12px; }
-    .admin-form input, .admin-form select, .admin-form textarea { background: #0f172a; border: 1px solid #334155; padding: 12px; border-radius: 6px; color: white; font-size: 0.95rem; }
+    .admin-form input, .admin-form select, .admin-form textarea { background: #0f172a; border: 1px solid #334155; padding: 12px; border-radius: 6px; color: white; font-size: 0.95rem; width: 100%; box-sizing: border-box; }
     .admin-form textarea { resize: vertical; min-height: 80px; }
     .admin-form input:focus, .admin-form select:focus, .admin-form textarea:focus { outline: 1px solid #7d6fff; }
     
+    /* Responsive Responsive Form Layout Adjustments */
+    .responsive-form-grid { display: grid; grid-template-columns: 1fr; gap: 16px; }
+    @media (min-width: 768px) { .responsive-form-grid { grid-template-columns: 1fr 1fr; } }
+    
+    .span-full { grid-column: 1 / -1; }
+    
+    .responsive-inner-grid { display: grid; grid-template-columns: 1fr; gap: 12px; }
+    @media (min-width: 600px) { .responsive-inner-grid { grid-template-columns: 1fr 1fr; } }
+
     /* Modern Toggle Switch Styling */
-    .toggle-container { display: flex; align-items: center; gap: 12px; margin: 10px 0; }
-    .switch { position: relative; display: inline-block; width: 48px; height: 24px; }
+    .toggle-container { display: flex; align-items: flex-start; gap: 12px; margin: 10px 0; }
+    .switch { position: relative; display: inline-block; width: 48px; height: 24px; flex-shrink: 0; }
     .switch input { opacity: 0; width: 0; height: 0; }
     .slider { position: absolute; cursor: pointer; top: 0; left: 0; right: 0; bottom: 0; background-color: #334155; transition: .3s; border-radius: 24px; }
     .slider:before { position: absolute; content: ""; height: 18px; width: 18px; left: 3px; bottom: 3px; background-color: white; transition: .3s; border-radius: 50%; }
     input:checked + .slider { background-color: #0d9488; }
     input:checked + .slider:before { transform: translateX(24px); }
     
-    .pub-btn { background: #0d9488; color: white; border: none; padding: 10px; border-radius: 6px; font-weight: 600; cursor: pointer; transition: background 0.2s; }
+    .pub-btn { background: #0d9488; color: white; border: none; padding: 12px; border-radius: 6px; font-weight: 600; cursor: pointer; transition: background 0.2s; font-size: 0.95rem; }
     .pub-btn:hover { background: #0f766e; }
     
-    .announcement-item, .article-mgmt-item { display: flex; justify-content: space-between; align-items: center; background: #0f172a; padding: 12px 16px; border-radius: 6px; margin-bottom: 8px; border-left: 3px solid #7d6fff; }
-    .announcement-item p, .article-mgmt-item p { margin: 0; font-size: 0.9rem; color: #cbd5e1; padding-right: 15px; }
-    .del-btn { background: #ef4444; color: white; border: none; padding: 4px 8px; border-radius: 4px; font-size: 0.8rem; cursor: pointer; }
+    .announcement-item, .article-mgmt-item { display: flex; flex-direction: column; justify-content: space-between; align-items: flex-start; background: #0f172a; padding: 12px 16px; border-radius: 6px; margin-bottom: 8px; border-left: 3px solid #7d6fff; gap: 12px; }
+    @media (min-width: 600px) { .announcement-item, .article-mgmt-item { flex-direction: row; align-items: center; gap: 6px; } }
+    
+    .announcement-item p, .article-mgmt-item p { margin: 0; font-size: 0.9rem; color: #cbd5e1; padding-right: 0; word-break: break-word; }
+    @media (min-width: 600px) { .announcement-item p, .article-mgmt-item p { padding-right: 15px; } }
+    
+    .action-btn-group { display: flex; gap: 8px; align-items: center; width: 100%; justify-content: flex-end; }
+    @media (min-width: 600px) { .action-btn-group { width: auto; } }
+    
+    .edit-btn { background: #d97706; color: white; border: none; padding: 6px 12px; border-radius: 4px; font-size: 0.85rem; cursor: pointer; font-weight: 600; }
+    .edit-btn:hover { background: #b45309; }
+    .del-btn { background: #ef4444; color: white; border: none; padding: 6px 12px; border-radius: 4px; font-size: 0.85rem; cursor: pointer; }
     .del-btn:hover { background: #dc2626; }
     
+    /* Highly Mobile-Responsive Modern Data Cards Table Solution */
     .data-table { width: 100%; border-collapse: collapse; background: #1e293b; border-radius: 8px; overflow: hidden; }
-    .data-table th, .data-table td { padding: 14px 20px; text-align: left; border-bottom: 1px solid #334155; }
-    .data-table th { background: #0f172a; color: #94a3b8; font-weight: 600; font-size: 0.9rem; }
+    .data-table thead { display: none; } /* Hide headers on small mobile display windows */
+    .data-table tr { display: block; border-bottom: 1px solid #334155; padding: 12px; }
+    .data-table td { display: flex; justify-content: space-between; align-items: center; padding: 8px 0; text-align: right; border-bottom: none; font-size: 0.9rem; }
+    .data-table td::before { content: attr(data-label); font-weight: 600; color: #94a3b8; text-align: left; padding-right: 10px; }
+    
+    @media (min-width: 600px) {
+      .data-table { display: table; }
+      .data-table thead { display: table-header-group; }
+      .data-table tr { display: table-row; border-bottom: none; }
+      .data-table th, .data-table td { display: table-cell; padding: 14px 20px; text-align: left; border-bottom: 1px solid #334155; }
+      .data-table th { background: #0f172a; color: #94a3b8; font-weight: 600; font-size: 0.9rem; }
+      .data-table td::before { content: none; }
+      .data-table td { text-align: left; }
+    }
+
     .badge { padding: 4px 10px; border-radius: 4px; font-size: 0.8rem; font-weight: 600; }
     .badge.Administrator { background: #7d6fff; color: white; }
     .back-home { color: #94a3b8; text-decoration: none; display: inline-block; margin-bottom: 20px; font-size: 0.9rem; }
     .back-home:hover { color: #7d6fff; }
+
+    .radio-group { display: flex; flex-wrap: wrap; gap: 15px; margin-bottom: 10px; font-size: 0.85rem; color: #94a3b8; }
+    .radio-group label { display: flex; align-items: center; gap: 5px; cursor: pointer; }
+
+    /* Rich Text Canvas Editor Styles */
+    .editor-toolbar { display: flex; flex-wrap: wrap; gap: 6px; background: #1e293b; padding: 8px; border: 1px solid #334155; border-bottom: none; border-radius: 6px 6px 0 0; }
+    .editor-toolbar button { background: #0f172a; border: 1px solid #334155; color: #cbd5e1; padding: 6px 10px; border-radius: 4px; font-size: 0.85rem; font-weight: 600; cursor: pointer; transition: all 0.2s; flex-grow: 1; text-align: center; }
+    @media (min-width: 480px) { .editor-toolbar button { flex-grow: 0; } }
+    .editor-toolbar button:hover { background: #334155; color: white; }
+    .rich-editor-canvas { background: #0f172a; border: 1px solid #334155; border-radius: 0 0 6px 6px; padding: 14px; min-height: 200px; color: white; font-size: 0.95rem; overflow-y: auto; outline: none; box-sizing: border-box; }
+    .rich-editor-canvas:focus { border-color: #7d6fff; }
+    .rich-editor-canvas ul, .rich-editor-canvas ol { padding-left: 20px; margin: 10px 0; }
+    .rich-editor-canvas p { margin: 0 0 10px 0; }
+    
+    .form-actions-row { display: flex; flex-direction: column-reverse; gap: 10px; justify-content: flex-end; width: 100%; }
+    @media (min-width: 480px) { .form-actions-row { flex-direction: row; align-items: center; } }
   </style>
 </head>
-<body style="background: #0f172a;">
+<body style="background: #0f172a; margin: 0;">
 
   <div class="admin-container">
     <a href="index.html" class="back-home">&larr; Return to Home Website</a>
@@ -52,18 +105,18 @@
     <p style="color: #94a3b8; margin-top: 4px;">Real-time management portal for GovMob Portal configurations.</p>
     
     <!-- 1. Media & Articles Publication Hub -->
-    <div class="panel-card">
-      <h2>📰 Media & Articles Publication Hub</h2>
+    <div class="panel-card" id="article-hub-card">
+      <h2 id="hub-form-title">📝 Media & Articles Publication Hub</h2>
       <p style="color: #94a3b8; font-size: 0.9rem; margin-bottom: 20px;">Write and deploy articles or events directly to your live database website layout sections.</p>
       
-      <form id="admin-article-form" class="admin-form" style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px;">
+      <form id="admin-article-form" class="admin-form responsive-form-grid">
         <div>
           <label style="display:block; margin-bottom:6px; color:#94a3b8; font-size:0.85rem;">Headline / Title *</label>
-          <input type="text" id="pub-title" required placeholder="e.g., Mobility Forum Announcement" style="width:100%; box-sizing:border-box;">
+          <input type="text" id="pub-title" required placeholder="e.g., Mobility Forum Announcement">
         </div>
         <div>
           <label style="display:block; margin-bottom:6px; color:#94a3b8; font-size:0.85rem;">Article Section Category *</label>
-          <select id="pub-section" required style="width:100%; box-sizing:border-box;">
+          <select id="pub-section" required>
             <option value="announcements">Announcement Category</option>
             <option value="events">Events Category</option>
             <option value="articles">Featured Articles Category</option>
@@ -71,23 +124,42 @@
         </div>
         <div>
           <label style="display:block; margin-bottom:6px; color:#94a3b8; font-size:0.85rem;">Author Designation Name *</label>
-          <input type="text" id="pub-author" required placeholder="e.g., Secretariat Office" style="width:100%; box-sizing:border-box;">
+          <input type="text" id="pub-author" required placeholder="e.g., Secretariat Office">
         </div>
         <div>
           <label style="display:block; margin-bottom:6px; color:#94a3b8; font-size:0.85rem;">Publish Date Frame Label *</label>
-          <input type="text" id="pub-date" required placeholder="e.g., June 8, 2026" style="width:100%; box-sizing:border-box;">
+          <input type="text" id="pub-date" required placeholder="e.g., June 8, 2026">
         </div>
-        <div style="grid-column: span 2;">
+        <div class="span-full">
           <label style="display:block; margin-bottom:6px; color:#94a3b8; font-size:0.85rem;">Extra Meta Tag Badge (e.g., Status, Location Pin) *</label>
-          <input type="text" id="pub-meta-extra" required placeholder="e.g., Registration: OPEN or Metro Manila Convention Center" style="width:100%; box-sizing:border-box;">
-        </div>
-        <div style="grid-column: span 2;">
-          <label style="display:block; margin-bottom:6px; color:#94a3b8; font-size:0.85rem;">Banner Card Image URL Reference</label>
-          <input type="url" id="pub-banner" placeholder="https://images.unsplash.com/photo-..." style="width:100%; box-sizing:border-box;">
+          <input type="text" id="pub-meta-extra" required placeholder="e.g., Registration: OPEN or Metro Manila Convention Center">
         </div>
 
-        <!-- NEW OPTIONAL BUTTON ACTION TOGGLE SYSTEM -->
-        <div style="grid-column: span 2; background: #0f172a; padding: 16px; border-radius: 8px; border: 1px solid #334155;">
+        <!-- OPTIONAL HEADER BANNER CONTAINER -->
+        <div class="span-full" style="background: #0f172a; padding: 16px; border-radius: 8px; border: 1px solid #334155; box-sizing: border-box;">
+          <div class="toggle-container">
+            <label class="switch">
+              <input type="checkbox" id="pub-toggle-banner" checked>
+              <span class="slider"></span>
+            </label>
+            <div>
+              <span style="display: block; font-size: 0.95rem; font-weight: 600;">Include Header Banner Image?</span>
+              <span style="display: block; font-size: 0.8rem; color: #94a3b8; margin-top: 2px;">Turn off if this publication card doesn't need a custom top artwork banner layout display.</span>
+            </div>
+          </div>
+          
+          <div id="banner-input-wrapper" style="margin-top: 14px;">
+            <div class="radio-group">
+              <label><input type="radio" name="banner-source" value="url" checked> Remote Image URL</label>
+              <label><input type="radio" name="banner-source" value="file"> Upload Local File</label>
+            </div>
+            <input type="url" id="pub-banner" placeholder="https://images.unsplash.com/photo-...">
+            <input type="file" id="pub-banner-file" accept="image/*" style="display: none;">
+          </div>
+        </div>
+
+        <!-- OPTIONAL BUTTON ACTION TOGGLE SYSTEM -->
+        <div class="span-full" style="background: #0f172a; padding: 16px; border-radius: 8px; border: 1px solid #334155; box-sizing: border-box;">
           <div class="toggle-container">
             <label class="switch">
               <input type="checkbox" id="pub-toggle-link">
@@ -95,26 +167,45 @@
             </label>
             <div>
               <span style="display: block; font-size: 0.95rem; font-weight: 600;">Include External Action Button?</span>
-              <span style="display: block; font-size: 0.8rem; color: #94a3b8;">Turn on to append a Registration or external reference redirect button to this post.</span>
+              <span style="display: block; font-size: 0.8rem; color: #94a3b8; margin-top: 2px;">Turn on to append a Registration or external reference redirect button to this post.</span>
             </div>
           </div>
           
-          <div id="link-input-wrapper" style="display: none; margin-top: 14px;">
-            <label style="display:block; margin-bottom:6px; color:#94a3b8; font-size:0.85rem;">Action Button Redirect URL *</label>
-            <input type="url" id="pub-action-link" placeholder="https://forms.gle/... or https://example.com" style="width:100%; box-sizing:border-box;">
+          <div id="link-input-wrapper" class="responsive-inner-grid" style="display: none; margin-top: 14px;">
+            <div>
+              <label style="display:block; margin-bottom:6px; color:#94a3b8; font-size:0.85rem;">Action Button Text Label</label>
+              <input type="text" id="pub-action-btn-name" placeholder="e.g., Register Now, Read More">
+            </div>
+            <div>
+              <label style="display:block; margin-bottom:6px; color:#94a3b8; font-size:0.85rem;">Action Button Redirect URL *</label>
+              <input type="url" id="pub-action-link" placeholder="https://forms.gle/... or https://example.com">
+            </div>
           </div>
         </div>
 
-        <div style="grid-column: span 2;">
+        <div class="span-full">
           <label style="display:block; margin-bottom:6px; color:#94a3b8; font-size:0.85rem;">Card Grid Summary Paragraph Text *</label>
-          <textarea id="pub-summary" required rows="2" placeholder="Enter clean snippet summary shown on index collection lists..." style="width:100%; box-sizing:border-box;"></textarea>
+          <textarea id="pub-summary" required rows="2" placeholder="Enter clean snippet summary shown on index collection lists..."></textarea>
         </div>
-        <div style="grid-column: span 2;">
-          <label style="display:block; margin-bottom:6px; color:#94a3b8; font-size:0.85rem;">Full Canvas Document Report Content (Supports standard HTML elements) *</label>
-          <textarea id="pub-body" required rows="6" placeholder="&lt;p&gt;Detailed body contents go here...&lt;/p&gt;&lt;h3&gt;Subheadings&lt;/h3&gt;" style="width:100%; box-sizing:border-box;"></textarea>
+
+        <!-- NEW RICH TEXT CANVAS EDITOR SYSTEM -->
+        <div class="span-full">
+          <label style="display:block; margin-bottom:6px; color:#94a3b8; font-size:0.85rem;">Full Canvas Document Report Content *</label>
+          <div class="editor-toolbar">
+            <button type="button" data-command="bold"><b>B</b></button>
+            <button type="button" data-command="italic"><i>I</i></button>
+            <button type="button" data-command="underline"><u>U</u></button>
+            <button type="button" data-command="insertUnorderedList">• Bullets</button>
+            <button type="button" data-command="insertOrderedList">1. Numbers</button>
+            <button type="button" data-command="formatBlock" data-value="h3">Heading</button>
+            <button type="button" data-command="formatBlock" data-value="p">Paragraph</button>
+          </div>
+          <div id="pub-body-editor" class="rich-editor-canvas" contenteditable="true" placeholder="Start typing details here..."></div>
         </div>
-        <div style="grid-column: span 2; text-align: right;">
-          <button type="submit" class="pub-btn" style="padding: 12px 30px;">Deploy & Publish Material Live</button>
+
+        <div class="span-full form-actions-row">
+          <button type="button" id="cancel-edit-btn" class="del-btn" style="padding: 12px 20px; display: none;">Cancel Update</button>
+          <button type="submit" id="submit-pub-btn" class="pub-btn" style="padding: 12px 30px;">Deploy & Publish Material Live</button>
         </div>
       </form>
 
@@ -140,7 +231,7 @@
         </div>
       </div>
 
-      <div class="panel-card">
+      <div class="panel-card" style="overflow-x: visible;">
         <h2>👥 User & Member Directory</h2>
         <table class="data-table">
           <thead>
@@ -151,7 +242,7 @@
           </thead>
           <tbody id="users-table-body">
             <tr>
-              <td colspan="2" style="text-align: center; color: #94a3b8;">Loading administrative data...</td>
+              <td data-label="Status" colspan="2" style="text-align: center; color: #94a3b8; justify-content: center;">Loading administrative data...</td>
             </tr>
           </tbody>
         </table>
@@ -162,7 +253,7 @@
   <script type="module">
     import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
     import { getAuth, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-auth.js";
-    import { getFirestore, doc, getDoc, collection, addDoc, getDocs, deleteDoc, onSnapshot } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
+    import { getFirestore, doc, getDoc, collection, addDoc, updateDoc, getDocs, deleteDoc, onSnapshot } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
 
     const firebaseConfig = {
       apiKey: "AIzaSyCvu4PhDb_9TsijzlL4Hy9s2gXyhevv264",
@@ -178,40 +269,93 @@
     const auth = getAuth(app);
     const db = getFirestore(app);
 
-    // Toggle Input Visibility Management Logic
+    let currentEditId = null;
+    let localArticlesCache = {};
+
+    // UI Configuration Elements 
+    const bannerToggle = document.getElementById('pub-toggle-banner');
+    const bannerWrapper = document.getElementById('banner-input-wrapper');
+    const bannerUrlInput = document.getElementById('pub-banner');
+    const bannerFileInput = document.getElementById('pub-banner-file');
+    const bannerSourceRadios = document.querySelectorAll('input[name="banner-source"]');
+
     const linkToggle = document.getElementById('pub-toggle-link');
     const linkWrapper = document.getElementById('link-input-wrapper');
     const linkInput = document.getElementById('pub-action-link');
+    const btnNameInput = document.getElementById('pub-action-btn-name');
+    
+    const editorCanvas = document.getElementById('pub-body-editor');
+    const submitPubBtn = document.getElementById('submit-pub-btn');
+    const cancelEditBtn = document.getElementById('cancel-edit-btn');
+    const hubFormTitle = document.getElementById('hub-form-title');
 
+    // Rich Text Toolbar Button Listeners Execution Logic
+    document.querySelectorAll('.editor-toolbar button').forEach(button => {
+      button.addEventListener('click', (e) => {
+        e.preventDefault();
+        const cmd = button.getAttribute('data-command');
+        const val = button.getAttribute('data-value') || null;
+        document.execCommand(cmd, false, val);
+        editorCanvas.focus();
+      });
+    });
+
+    // Make contenteditable placeholders behave cleanly
+    editorCanvas.addEventListener('focus', () => {
+      if(editorCanvas.innerHTML.trim() === "") {
+        document.execCommand('defaultParagraphSeparator', false, 'p');
+      }
+    });
+
+    // Header Banner Toggle Logic
+    bannerToggle.addEventListener('change', () => {
+      if (bannerToggle.checked) {
+        bannerWrapper.style.display = 'block';
+      } else {
+        bannerWrapper.style.display = 'none';
+        bannerUrlInput.value = '';
+        bannerFileInput.value = '';
+      }
+    });
+
+    bannerSourceRadios.forEach(radio => {
+      radio.addEventListener('change', (e) => {
+        if (e.target.value === 'url') {
+          bannerUrlInput.style.display = 'block';
+          bannerFileInput.style.display = 'none';
+          bannerFileInput.value = '';
+        } else {
+          bannerUrlInput.style.display = 'none';
+          bannerUrlInput.value = '';
+          bannerFileInput.style.display = 'block';
+        }
+      });
+    });
+
+    // Link Action Button Controls
     linkToggle.addEventListener('change', () => {
       if (linkToggle.checked) {
-        linkWrapper.style.display = 'block';
+        linkWrapper.style.display = 'grid';
         linkInput.required = true;
       } else {
         linkWrapper.style.display = 'none';
         linkInput.required = false;
         linkInput.value = '';
+        btnNameInput.value = '';
       }
     });
 
-    // Dynamic Auth Stream Validation Engine
     onAuthStateChanged(auth, async (user) => {
-      if (!user) {
-        console.warn("No active authenticated account session matching browser records.");
-        return;
-      }
+      if (!user) return;
       const userDoc = await getDoc(doc(db, "users", user.uid));
-      if (!userDoc.exists() || userDoc.data().role !== "Administrator") {
-        console.warn("Administrative Clearance verification missing inside directory roles mapping.");
-        return;
-      }
+      if (!userDoc.exists() || userDoc.data().role !== "Administrator") return;
       
       loadUserDirectory();
       listenToAnnouncements();
       listenToArticles();
     });
 
-    // Handle Article Submission
+    // Submit Document Package Handler
     document.getElementById('admin-article-form').addEventListener('submit', async (e) => {
       e.preventDefault();
       
@@ -220,29 +364,70 @@
       const author = document.getElementById('pub-author').value.trim();
       const date = document.getElementById('pub-date').value.trim();
       const metaExtra = document.getElementById('pub-meta-extra').value.trim();
-      const bannerImage = document.getElementById('pub-banner').value.trim() || 'https://images.unsplash.com/photo-1517486808906-6ca8b3f04846?auto=format&fit=crop&q=80&w=1200';
       const summary = document.getElementById('pub-summary').value.trim();
-      const body = document.getElementById('pub-body').value.trim();
       
-      // Capturing Toggle Button Parameters
+      // Extract formatted HTML natively straight from the contenteditable container canvas
+      const body = editorCanvas.innerHTML;
+      if (editorCanvas.textContent.trim() === "") {
+        alert("Please enter body copy for your document report content.");
+        return;
+      }
+      
+      let bannerImage = 'none'; 
+      const hasBanner = bannerToggle.checked;
+      
+      if (hasBanner) {
+        const sourceMode = document.querySelector('input[name="banner-source"]:checked').value;
+        if (sourceMode === 'url' && bannerUrlInput.value.trim() !== '') {
+          bannerImage = bannerUrlInput.value.trim();
+        } else if (sourceMode === 'file' && bannerFileInput.files.length > 0) {
+          bannerImage = "local-file-attached:" + bannerFileInput.files[0].name;
+        } else {
+          bannerImage = 'https://images.unsplash.com/photo-1517486808906-6ca8b3f04846?auto=format&fit=crop&q=80&w=1200';
+        }
+      }
+      
       const hasLink = linkToggle.checked;
       const actionLink = hasLink ? linkInput.value.trim() : "";
+      const actionBtnName = hasLink ? btnNameInput.value.trim() : "";
+
+      const payload = {
+        title, type, author, date, metaExtra, bannerImage, hasBanner, summary, body,
+        hasLink, actionLink, actionBtnName,
+        timestamp: new Date().toISOString()
+      };
 
       try {
-        await addDoc(collection(db, "articles"), {
-          title, type, author, date, metaExtra, bannerImage, summary, body,
-          hasLink, actionLink,
-          timestamp: new Date().toISOString()
-        });
-        alert("Publication successfully deployed live!");
-        document.getElementById('admin-article-form').reset();
-        linkWrapper.style.display = 'none'; // reset visual wrapper state
+        if (currentEditId) {
+          await updateDoc(doc(db, "articles", currentEditId), payload);
+          alert("Publication modifications updated successfully!");
+        } else {
+          await addDoc(collection(db, "articles"), payload);
+          alert("Publication successfully deployed live!");
+        }
+        resetFormState();
       } catch (err) {
-        alert("Error saving publication text payload: " + err.message);
+        alert("Error saving publication payload: " + err.message);
       }
     });
 
-    // Real-time Articles Listener
+    function resetFormState() {
+      currentEditId = null;
+      document.getElementById('admin-article-form').reset();
+      editorCanvas.innerHTML = "";
+      linkWrapper.style.display = 'none';
+      bannerToggle.checked = true;
+      bannerWrapper.style.display = 'block';
+      bannerUrlInput.style.display = 'block';
+      bannerFileInput.style.display = 'none';
+      submitPubBtn.textContent = "Deploy & Publish Material Live";
+      submitPubBtn.style.background = "#0d9488";
+      cancelEditBtn.style.display = 'none';
+      hubFormTitle.textContent = "📝 Media & Articles Publication Hub";
+    }
+
+    cancelEditBtn.addEventListener('click', resetFormState);
+
     function listenToArticles() {
       const list = document.getElementById('admin-articles-list');
       onSnapshot(collection(db, "articles"), (snap) => {
@@ -251,29 +436,100 @@
           return;
         }
         list.innerHTML = "";
+        localArticlesCache = {};
+
         snap.forEach((docSnap) => {
           const data = docSnap.data();
+          const id = docSnap.id;
+          localArticlesCache[id] = data;
+
           const item = document.createElement('div');
           item.className = 'article-mgmt-item';
           
-          // Visual Indicator badge if a post includes an external registration link
-          const linkBadge = data.hasLink ? ` <span style="color: #0d9488; font-size: 0.75rem; margin-left: 5px;">[🔗 Action Link Active]</span>` : '';
+          const bannerBadge = (data.hasBanner === false || data.bannerImage === 'none') ? ` <span style="color: #94a3b8; font-size: 0.75rem; display: inline-block; margin-left: 5px;">[No Banner]</span>` : '';
+          const linkBadge = data.hasLink ? ` <span style="color: #0d9488; font-size: 0.75rem; display: inline-block; margin-left: 5px;">[🔗 Link Active]</span>` : '';
           
           item.innerHTML = `
-            <p><strong>[${data.type.toUpperCase()}]</strong> ${data.title}${linkBadge}</p>
-            <button class="del-btn" data-id="${docSnap.id}">Delete</button>
+            <p><strong>[${data.type.toUpperCase()}]</strong> ${data.title}${bannerBadge}${linkBadge}</p>
+            <div class="action-btn-group">
+              <button class="edit-btn" data-id="${id}">Edit</button>
+              <button class="del-btn" data-id="${id}">Delete</button>
+            </div>
           `;
           list.appendChild(item);
         });
 
+        document.querySelectorAll('#admin-articles-list .edit-btn').forEach(btn => {
+          btn.addEventListener('click', (e) => loadArticleToForm(e.target.dataset.id));
+        });
+
         document.querySelectorAll('#admin-articles-list .del-btn').forEach(btn => {
           btn.addEventListener('click', async (e) => {
+            const id = e.target.dataset.id;
             if(confirm("Confirm deletion of this dynamic publication card?")) {
-              await deleteDoc(doc(db, "articles", e.target.dataset.id));
+              if (currentEditId === id) resetFormState();
+              await deleteDoc(doc(db, "articles", id));
             }
           });
         });
       });
+    }
+
+    function loadArticleToForm(id) {
+      const data = localArticlesCache[id];
+      if (!data) return;
+
+      currentEditId = id;
+      hubFormTitle.textContent = "✏️ Edit Active Publication Panel";
+      
+      document.getElementById('pub-title').value = data.title || "";
+      document.getElementById('pub-section').value = data.type || "announcements";
+      document.getElementById('pub-author').value = data.author || "";
+      document.getElementById('pub-date').value = data.date || "";
+      document.getElementById('pub-meta-extra').value = data.metaExtra || "";
+      document.getElementById('pub-summary').value = data.summary || "";
+      
+      // Set the HTML editor block elements smoothly
+      editorCanvas.innerHTML = data.body || "";
+
+      if (data.hasBanner !== false && data.bannerImage !== 'none') {
+        bannerToggle.checked = true;
+        bannerWrapper.style.display = 'block';
+        if(data.bannerImage && data.bannerImage.startsWith('local-file-attached:')) {
+          document.querySelector('input[name="banner-source"][value="file"]').checked = true;
+          bannerUrlInput.style.display = 'none';
+          bannerFileInput.style.display = 'block';
+        } else {
+          document.querySelector('input[name="banner-source"][value="url"]').checked = true;
+          bannerUrlInput.style.display = 'block';
+          bannerUrlInput.value = data.bannerImage || "";
+          bannerFileInput.style.display = 'none';
+        }
+      } else {
+        bannerToggle.checked = false;
+        bannerWrapper.style.display = 'none';
+        bannerUrlInput.value = "";
+      }
+
+      if (data.hasLink) {
+        linkToggle.checked = true;
+        linkWrapper.style.display = 'grid';
+        linkInput.required = true;
+        linkInput.value = data.actionLink || "";
+        btnNameInput.value = data.actionBtnName || "";
+      } else {
+        linkToggle.checked = false;
+        linkWrapper.style.display = 'none';
+        linkInput.required = false;
+        linkInput.value = "";
+        btnNameInput.value = "";
+      }
+
+      submitPubBtn.textContent = "Update & Save Changes";
+      submitPubBtn.style.background = "#d97706";
+      cancelEditBtn.style.display = 'inline-block';
+
+      document.getElementById('article-hub-card').scrollIntoView({ behavior: 'smooth' });
     }
 
     // Original Broadcast Elements Handling
@@ -294,7 +550,7 @@
         snap.forEach((docSnap) => {
           const item = document.createElement('div');
           item.className = 'announcement-item';
-          item.innerHTML = `<p>${docSnap.data().message}</p><button class="del-btn" data-id="${docSnap.id}">Delete</button>`;
+          item.innerHTML = `<p>${docSnap.data().message}</p><div class="action-btn-group"><button class="del-btn" data-id="${docSnap.id}">Delete</button></div>`;
           list.appendChild(item);
         });
         document.querySelectorAll('#announcements-list .del-btn').forEach(btn => {
@@ -310,9 +566,9 @@
         tbody.innerHTML = ""; 
         querySnapshot.forEach((docSnap) => {
           const data = docSnap.data();
-          tbody.innerHTML += `<tr><td>${data.email}</td><td><span class="badge Administrator">${data.role}</span></td></tr>`;
+          tbody.innerHTML += `<tr><td data-label="User Email">${data.email}</td><td data-label="Assigned Role"><span class="badge Administrator">${data.role}</span></td></tr>`;
         });
-      } catch (err) { tbody.innerHTML = `<tr><td colspan="2" style="color:#f87171; text-align:center;">Directory connection offline.</td></tr>`; }
+      } catch (err) { tbody.innerHTML = `<tr><td data-label="Status" colspan="2" style="color:#f87171; text-align:center; justify-content:center;">Directory connection offline.</td></tr>`; }
     }
   </script>
 </body>

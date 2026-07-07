@@ -6766,3 +6766,17 @@ section {
 .action-redirect-btn:active {
   transform: translateY(0);
 }
+/* Clean layout handling for text-only publication cards without header banners */
+.article-horizontal-card.no-image-layout button {
+  display: block; /* Removes side grid requirements if image doesn't exist */
+}
+
+.article-horizontal-card.no-image-layout .article-card-body {
+  width: 100%;
+  padding: 24px; /* Gives nice balanced spacing to the text context */
+}
+
+/* Optional separation adjustment for report headers without cover layout backgrounds */
+.report-screen-visible .report-hero-cover[style*="display: none"] + .report-inner-container {
+  margin-top: 60px; /* Pads standard content container elegantly downward away from the navbar buttons */
+}
