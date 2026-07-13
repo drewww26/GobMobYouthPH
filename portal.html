@@ -106,7 +106,7 @@
     }
     .auth-container { width: 100%; max-width: 480px; background: var(--surface); border: 1px solid var(--border); border-radius: 24px; padding: 2.5rem; box-shadow: var(--shadow); }
     .auth-brand { text-align: center; margin-bottom: 2rem; }
-    .auth-brand h1 { font-size: 1.75rem; font-weight: 800; background: var(--accent-gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+    .auth-brand h1 { font-size: 1.75rem; font-weight: 800; background: var(--accent-gradient); background-clip: text; -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
     .auth-tabs { display: flex; border-bottom: 2px solid var(--border); margin-bottom: 2rem; }
     .auth-tab-btn { flex: 1; background: none; border: none; padding: 0.75rem; font-family: 'Sora', sans-serif; font-size: 0.95rem; font-weight: 600; color: var(--muted); cursor: pointer; position: relative; }
     .auth-tab-btn.active { color: var(--text); }
@@ -125,7 +125,7 @@
     #portal-main-layout { display: none; min-height: 100vh; grid-template-columns: 260px 1fr; }
     .portal-sidebar { background: var(--surface); border-right: 1px solid var(--border); padding: 2rem 1.5rem; display: flex; flex-direction: column; position: sticky; top: 0; height: 100vh; z-index: 100; }
     .sidebar-header { margin-bottom: 2.5rem; }
-    .sidebar-logo { font-weight: 800; font-size: 1.3rem; background: var(--accent-gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+    .sidebar-logo { font-weight: 800; font-size: 1.3rem; background: var(--accent-gradient); background-clip: text; -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
     .sidebar-menu { list-style: none; display: flex; flex-direction: column; gap: 0.5rem; }
     .menu-link { display: flex; align-items: center; gap: 0.75rem; padding: 0.85rem 1rem; color: var(--text); text-decoration: none; font-weight: 500; border-radius: var(--radius); font-size: 0.95rem; }
     .menu-link:hover, .menu-link.active { background: rgba(99, 102, 241, 0.08); color: var(--accent); font-weight: 600; }
@@ -671,7 +671,7 @@
     };
 
     const app = initializeApp(firebaseConfig);
-    const auth = getAuth(app);
+    const authstate = getAuth(app);
     const db = getFirestore(app);
 
     const PIN_REGISTRY = {
@@ -1352,8 +1352,8 @@
 
   <script type="module">
     import { getAuth, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-auth.js";
-    const authState = getAuth();
-    onAuthStateChanged(authState, (user) => {
+    const auth = getAuth();
+    onAuthStateChanged(auth, (user) => {
       if (user) {
         window.globalActiveUidForAutoProfileFallback = user.uid;
       } else {

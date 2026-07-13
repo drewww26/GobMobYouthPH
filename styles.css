@@ -345,13 +345,13 @@ img {
     z-index: 1500 !important;
   }
 }
-  }
+  
 
   .header-actions {
     width: auto;
     justify-content: flex-end;
   }
-}
+
 
 .theme-toggle:hover,
 .menu-toggle:hover {
@@ -3182,7 +3182,7 @@ main {
   border: 1px solid rgba(125, 111, 255, 0.25);
   margin-bottom: 0.5rem;
 }
-}
+
 /* Horizontal Article & Event Cards List Container */
 .horizontal-cards-list {
   display: flex;
@@ -4975,7 +4975,7 @@ body.dark-mode .tree-picture-holder-container {
 .dark-mode .page-head-about h1,
 .dark-mode .page-head-about p,
 .dark-mode .about-top-subtitle {
-  color:; #f4f4fb !important; 
+  color: #f4f4fb !important; 
 }
 
 /* Adjust the container's inner background border card if needed */
@@ -6038,8 +6038,9 @@ section {
 .program-action-btn.btn-secondary { background: transparent; color: var(--text); border: 1px solid var(--border); }
 .program-action-btn.btn-secondary:hover { background: var(--bg); }
 .btn-arrow { transition: transform 0.2s ease; }
-.program-action-btn:hover .btn-arrow { transform: translateX(4px); }
+.program-action-btn:hover .btn-arrow { transform: translateX(4px); 
 }
+
 /* ==========================================================================
    FORCE FULL-SCREEN HERO BANNER (NO SIDE SPACES)
    ========================================================================== */
