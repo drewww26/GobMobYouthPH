@@ -6780,3 +6780,480 @@ section {
 .report-screen-visible .report-hero-cover[style*="display: none"] + .report-inner-container {
   margin-top: 60px; /* Pads standard content container elegantly downward away from the navbar buttons */
 }
+/* Fix initial authentication button flash state */
+.initial-hidden {
+  opacity: 0 !important;
+  pointer-events: none !important;
+  visibility: hidden !important;
+}
+/* ==========================================================================
+   PORTAL REDIRECT BANNER SECTION
+   ========================================================================== */
+.portal-redirect-section {
+  padding: 60px 24px;
+  max-width: 1200px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+.portal-redirect-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-radius: 16px;
+  padding: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 32px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.04);
+}
+
+.portal-redirect-content {
+  flex: 1;
+}
+
+.portal-tag {
+  display: inline-block;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  color: var(--accent);
+  background: rgba(125, 111, 255, 0.1);
+  padding: 6px 12px;
+  border-radius: 20px;
+  margin-bottom: 12px;
+}
+
+.portal-redirect-content h2 {
+  font-size: 2rem;
+  font-weight: 800;
+  color: var(--text);
+  margin-bottom: 12px;
+}
+
+.portal-redirect-content p {
+  color: var(--muted);
+  font-size: 1.05rem;
+  line-height: 1.6;
+  max-width: 700px;
+}
+
+.portal-redirect-action {
+  flex-shrink: 0;
+}
+
+.arrow-icon {
+  margin-left: 6px;
+  transition: transform 0.2s ease;
+  display: inline-block;
+}
+
+.action-redirect-btn:hover .arrow-icon {
+  transform: translateX(4px);
+}
+
+/* ==========================================================================
+   EDGE-TO-EDGE CYBERPUNK PORTAL BANNER (NO SIDE MARGINS & CENTERING)
+   ========================================================================== */
+.portal-fluid-section {
+  width: 100vw;
+  position: relative;
+  left: 50%;
+  right: 50%;
+  margin-left: -50vw;
+  margin-right: -50vw;
+  margin-top: 60px;
+  margin-bottom: 60px;
+  overflow: hidden;
+}
+
+.portal-fluid-glass {
+  background: linear-gradient(135deg, rgba(21, 23, 42, 0.95) 0%, rgba(13, 14, 27, 0.98) 100%);
+  border-top: 1px solid rgba(125, 111, 255, 0.25);
+  border-bottom: 1px solid rgba(125, 111, 255, 0.25);
+  padding: 90px 24px;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Dynamic ambient glow effects behind the text */
+.portal-glow-orb-1 {
+  position: absolute;
+  top: -20%;
+  left: 15%;
+  width: 350px;
+  height: 350px;
+  background: radial-gradient(circle, rgba(125, 111, 255, 0.22) 0%, transparent 70%);
+  filter: blur(40px);
+  pointer-events: none;
+}
+
+.portal-glow-orb-2 {
+  position: absolute;
+  bottom: -20%;
+  right: 15%;
+  width: 400px;
+  height: 400px;
+  background: radial-gradient(circle, rgba(13, 148, 136, 0.18) 0%, transparent 70%);
+  filter: blur(50px);
+  pointer-events: none;
+}
+
+.portal-fluid-container {
+  max-width: 850px;
+  width: 100%;
+  text-align: center;
+  position: relative;
+  z-index: 5;
+}
+
+.portal-badge-glow {
+  display: inline-block;
+  font-size: 0.75rem;
+  font-weight: 800;
+  letter-spacing: 2.5px;
+  color: #a5b4fc;
+  background: rgba(125, 111, 255, 0.15);
+  border: 1px solid rgba(125, 111, 255, 0.3);
+  padding: 6px 16px;
+  border-radius: 30px;
+  margin-bottom: 24px;
+  box-shadow: 0 0 15px rgba(125, 111, 255, 0.1);
+  text-transform: uppercase;
+}
+
+.portal-fluid-container h2 {
+  font-size: 3rem;
+  font-weight: 800;
+  color: #ffffff;
+  margin-bottom: 16px;
+  letter-spacing: -0.5px;
+  text-shadow: 0 2px 10px rgba(0,0,0,0.3);
+}
+
+.portal-fluid-container p {
+  color: #cbd5e1;
+  font-size: 1.15rem;
+  line-height: 1.7;
+  margin-bottom: 36px;
+}
+
+.portal-fluid-action {
+  display: flex;
+  justify-content: center;
+}
+
+/* Highly attractive animated button element with hover states */
+.portal-cosmic-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  background: linear-gradient(135deg, #7d6fff 0%, #5b4eff 100%);
+  color: #ffffff !important;
+  text-decoration: none !important;
+  font-weight: 700;
+  font-size: 1.05rem;
+  padding: 16px 40px;
+  border-radius: 50px;
+  box-shadow: 0 4px 20px rgba(125, 111, 255, 0.4), inset 0 1px 1px rgba(255,255,255,0.2);
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  position: relative;
+  overflow: hidden;
+}
+
+.portal-cosmic-btn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: all 0.6s ease;
+}
+
+.portal-btn-arrow {
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Hover Interactive Effects */
+.portal-cosmic-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 30px rgba(125, 111, 255, 0.6), 0 0 0 4px rgba(125, 111, 255, 0.2);
+  background: linear-gradient(135deg, #8c80ff 0%, #695cff 100%);
+}
+
+.portal-cosmic-btn:hover::before {
+  left: 100%;
+}
+
+.portal-cosmic-btn:hover .portal-btn-arrow {
+  transform: translateX(6px);
+}
+
+.portal-cosmic-btn:active {
+  transform: translateY(-1px);
+}
+
+/* Responsiveness handling for smaller screens */
+@media (max-width: 768px) {
+  .portal-fluid-glass {
+    padding: 60px 20px;
+  }
+  .portal-fluid-container h2 {
+    font-size: 2.25rem;
+  }
+  .portal-fluid-container p {
+    font-size: 1rem;
+  }
+  .portal-cosmic-btn {
+    width: 100%;
+    padding: 14px 28px;
+  }
+}
+/* ==========================================================================
+   PORTAL REDIRECT BANNER SECTION (FIXED & CENTERED)
+   ========================================================================== */
+.portal-fluid-section {
+  width: 100%;
+  padding: 60px 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-sizing: border-box;
+}
+
+.portal-fluid-glass {
+  /* Keeps your original surface background color intact */
+  background: var(--surface);
+  border: 1px solid var(--border);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-radius: 24px;
+  padding: 60px 40px;
+  width: 100%;
+  max-width: 1200px; /* Aligns flawlessly with your content width */
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.03), 0 1px 3px rgba(0, 0, 0, 0.01);
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Subtle modern highlight overlay when hovering over the banner */
+.portal-fluid-glass:hover {
+  border-color: var(--accent);
+  box-shadow: 0 20px 40px rgba(125, 111, 255, 0.08);
+}
+
+.portal-fluid-container {
+  max-width: 800px;
+  margin: 0 auto;
+  text-align: center;
+  position: relative;
+  z-index: 2;
+}
+
+/* Modern accent tag badge */
+.portal-badge-glow {
+  display: inline-block;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 2px;
+  color: var(--accent);
+  background: rgba(125, 111, 255, 0.08);
+  border: 1px solid rgba(125, 111, 255, 0.2);
+  padding: 6px 16px;
+  border-radius: 30px;
+  margin-bottom: 20px;
+  text-transform: uppercase;
+}
+
+.portal-fluid-container h2 {
+  font-size: 2.5rem;
+  font-weight: 800;
+  color: var(--text);
+  margin-bottom: 16px;
+  letter-spacing: -0.5px;
+}
+
+.portal-fluid-container p {
+  color: var(--muted);
+  font-size: 1.1rem;
+  line-height: 1.65;
+  margin-bottom: 32px;
+}
+
+/* Centered Button Wrapper */
+.portal-fluid-action {
+  display: flex;
+  justify-content: center;
+}
+
+/* Clean, modern interactive button styling */
+.portal-cosmic-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  background: var(--accent);
+  color: #ffffff !important;
+  text-decoration: none !important;
+  font-weight: 700;
+  font-size: 1rem;
+  padding: 14px 36px;
+  border-radius: 50px;
+  box-shadow: 0 4px 15px rgba(125, 111, 255, 0.3);
+  transition: transform 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease;
+}
+
+.portal-btn-arrow {
+  transition: transform 0.2s ease;
+}
+
+/* Hover States */
+.portal-cosmic-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(125, 111, 255, 0.4);
+  opacity: 0.95;
+}
+
+.portal-cosmic-btn:hover .portal-btn-arrow {
+  transform: translateX(4px);
+}
+
+.portal-cosmic-btn:active {
+  transform: translateY(0);
+}
+
+/* Responsive adjustment for phones */
+@media (max-width: 768px) {
+  .portal-fluid-glass {
+    padding: 40px 20px;
+    border-radius: 16px;
+  }
+  .portal-fluid-container h2 {
+    font-size: 2rem;
+  }
+  .portal-cosmic-btn {
+    width: 100%;
+  }
+}
+/* ==========================================================================
+   PORTAL REDIRECT BANNER (FIXED, CENTERED & BALANCED)
+   ========================================================================== */
+.portal-fixed-section {
+  width: 100%;
+  max-width: 1200px; /* Perfectly matches your main site content grid width */
+  margin: 60px auto; /* Symmetrically centers the banner on the screen */
+  padding: 0 24px;   /* Safe gutters for mobile responsive screens */
+  box-sizing: border-box;
+}
+
+.portal-fixed-container {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-radius: 20px;
+  padding: 50px 32px;
+  text-align: center; /* Centers all internal headers and text elements */
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.03);
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Elegant light glowing border interaction on hover */
+.portal-fixed-container:hover {
+  border-color: var(--accent);
+  box-shadow: 0 15px 35px rgba(125, 111, 255, 0.08);
+}
+
+.portal-badge-glow {
+  display: inline-block;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 2px;
+  color: var(--accent);
+  background: rgba(125, 111, 255, 0.08);
+  border: 1px solid rgba(125, 111, 255, 0.2);
+  padding: 5px 14px;
+  border-radius: 30px;
+  margin-bottom: 20px;
+  text-transform: uppercase;
+}
+
+.portal-fixed-container h2 {
+  font-size: 2.5rem;
+  font-weight: 800;
+  color: var(--text);
+  margin: 0 0 16px 0;
+  letter-spacing: -0.5px;
+}
+
+.portal-fixed-container p {
+  color: var(--muted);
+  font-size: 1.1rem;
+  line-height: 1.65;
+  max-width: 750px;
+  margin: 0 auto 32px auto; /* Centers paragraph layout body copy block */
+}
+
+.portal-fluid-action {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Beautiful modern interactive button element */
+.portal-cosmic-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  background: var(--accent);
+  color: #ffffff !important;
+  text-decoration: none !important;
+  font-weight: 700;
+  font-size: 1rem;
+  padding: 14px 36px;
+  border-radius: 50px;
+  box-shadow: 0 4px 15px rgba(125, 111, 255, 0.25);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.arrow-icon {
+  transition: transform 0.2s ease;
+  display: inline-block;
+}
+
+/* Hover States */
+.portal-cosmic-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(125, 111, 255, 0.4);
+}
+
+.portal-cosmic-btn:hover .arrow-icon {
+  transform: translateX(4px);
+}
+
+.portal-cosmic-btn:active {
+  transform: translateY(0);
+}
+
+/* Mobile Responsiveness adjustments */
+@media (max-width: 768px) {
+  .portal-fixed-container {
+    padding: 40px 20px;
+  }
+  .portal-fixed-container h2 {
+    font-size: 1.85rem;
+  }
+  .portal-cosmic-btn {
+    width: 100%;
+  }
+}
