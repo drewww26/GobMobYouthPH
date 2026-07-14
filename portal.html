@@ -656,27 +656,15 @@
   <!-- ==========================================================================
        DATABASE INTEGRATION ENGINE
        ========================================================================== -->
-  <script type="module">
-    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
-    import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-auth.js";
-    import { getFirestore, doc, setDoc, getDoc, collection, onSnapshot, updateDoc } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
-
-    // Load Firebase config from environment variables
-    // Never hardcode secrets - use environment variables instead
-    const firebaseConfig = {
-      apiKey: import.meta.env.VITE_FIREBASE_API_KEY,
-      authDomain: import.meta.env.VITE_FIREBASE_AUTH_DOMAIN,
-      projectId: import.meta.env.VITE_FIREBASE_PROJECT_ID,
-      storageBucket: import.meta.env.VITE_FIREBASE_STORAGE_BUCKET,
-      messagingSenderId: import.meta.env.VITE_FIREBASE_MESSAGING_SENDER_ID,
-      appId: import.meta.env.VITE_FIREBASE_APP_ID
-    };
-
-    const app = initializeApp(firebaseConfig);
-    const authstate = getAuth(app);
-    const db = getFirestore(app);
-
-    const PIN_REGISTRY = {
+   <script type="module">
+  // 1. Import your working Firebase services from your JS file 
+  // (Make sure your auth-global.js or app.js exports 'auth' and 'db'!)
+  import { auth, db } from "./auth-global.js"; 
+  
+  // 2. Re-assign them to the variables your HTML script expects:
+  const authState = auth;
+     
+  const PIN_REGISTRY = {
       "Official Member": ["GOVMOB_MEM2026", "YOUTH_LEAD_2026"],
       "Volunteer Personnel": ["GOVMOB_VOL2026"],
       "Executive Officer": ["GOVMOB_EXEC2026"],
