@@ -15,13 +15,13 @@ import {
 
 // Firebase Configuration
 const firebaseConfig = {
-  apiKey: "AIzaSyCvu4PhDb_9TsijzlL4Hy9s2gXyhevv264",
-  authDomain: "govmob-portal.firebaseapp.com",
-  projectId: "govmob-portal",
-  storageBucket: "govmob-portal.firebasestorage.app",
-  messagingSenderId: "15495270960",
-  appId: "1:15495270960:web:acde6f3e78d3b7982f93f5",
-  measurementId: "G-LCE5NWSDVB"
+  apiKey: import.meta.env.VITE_FIREBASE_API_KEY,
+  authDomain: import.meta.env.VITE_FIREBASE_AUTH_DOMAIN,
+  projectId: import.meta.env.VITE_FIREBASE_PROJECT_ID,
+  storageBucket: import.meta.env.VITE_FIREBASE_STORAGE_BUCKET,
+  messagingSenderId: import.meta.env.VITE_FIREBASE_MESSAGING_SENDER_ID,
+  appId: import.meta.env.VITE_FIREBASE_APP_ID,
+  measurementId: import.meta.env.VITE_FIREBASE_MEASUREMENT_ID
 };
 
 // Initialize Firebase Services
