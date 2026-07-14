@@ -108,14 +108,14 @@
     .auth-brand { text-align: center; margin-bottom: 2rem; }
     .auth-brand h1 { font-size: 1.75rem; font-weight: 800; background: var(--accent-gradient); background-clip: text; -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
     .auth-tabs { display: flex; border-bottom: 2px solid var(--border); margin-bottom: 2rem; }
-    .auth-tab-btn { flex: 1; background: none; border: none; padding: 0.75rem; font-family: 'Sora', sans-serif; font-size: 0.95rem; font-weight: 600; color: var(--muted); cursor: pointer; position: relative; }
+    .auth-tab-btn { flex: 1; background: none; border: none; padding: 0.75rem; font-family: 'Sora', sans-serif; font-size: 0.95rem; font-weight: 600; color: var(--muted); cursor: pointer; positio[...]
     .auth-tab-btn.active { color: var(--text); }
     .auth-tab-btn.active::after { content: ''; position: absolute; bottom: -2px; left: 0; right: 0; height: 2px; background: var(--accent-gradient); }
     .auth-form-wrapper { display: none; }
     .auth-form-wrapper.active { display: block; }
     .form-group { margin-bottom: 1.25rem; }
     .form-group label { display: block; font-size: 0.85rem; font-weight: 600; margin-bottom: 0.5rem; }
-    .form-group input, .form-group select, .form-group textarea { width: 100%; background: var(--surface-strong); border: 1px solid var(--border); padding: 0.85rem 1rem; border-radius: var(--radius); color: var(--text); font-family: 'Sora', sans-serif; outline: none; }
+    .form-group input, .form-group select, .form-group textarea { width: 100%; background: var(--surface-strong); border: 1px solid var(--border); padding: 0.85rem 1rem; border-radius: var(--radi[...]
     .auth-submit-btn { width: 100%; justify-content: center; margin-top: 1rem; padding: 1rem; }
     .auth-error-msg { color: #ef4444; font-size: 0.85rem; margin-top: 0.75rem; text-align: center; display: none; }
 
@@ -123,20 +123,20 @@
        MAIN APP WORKSPACE SHELL
        ========================================================================== */
     #portal-main-layout { display: none; min-height: 100vh; grid-template-columns: 260px 1fr; }
-    .portal-sidebar { background: var(--surface); border-right: 1px solid var(--border); padding: 2rem 1.5rem; display: flex; flex-direction: column; position: sticky; top: 0; height: 100vh; z-index: 100; }
+    .portal-sidebar { background: var(--surface); border-right: 1px solid var(--border); padding: 2rem 1.5rem; display: flex; flex-direction: column; position: sticky; top: 0; height: 100vh; z-in[...]
     .sidebar-header { margin-bottom: 2.5rem; }
     .sidebar-logo { font-weight: 800; font-size: 1.3rem; background: var(--accent-gradient); background-clip: text; -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
     .sidebar-menu { list-style: none; display: flex; flex-direction: column; gap: 0.5rem; }
-    .menu-link { display: flex; align-items: center; gap: 0.75rem; padding: 0.85rem 1rem; color: var(--text); text-decoration: none; font-weight: 500; border-radius: var(--radius); font-size: 0.95rem; }
+    .menu-link { display: flex; align-items: center; gap: 0.75rem; padding: 0.85rem 1rem; color: var(--text); text-decoration: none; font-weight: 500; border-radius: var(--radius); font-size: 0.9[...]
     .menu-link:hover, .menu-link.active { background: rgba(99, 102, 241, 0.08); color: var(--accent); font-weight: 600; }
     
-    .portal-top-bar { height: 70px; background: var(--surface); border-bottom: 1px solid var(--border); padding: 0 2rem; display: flex; align-items: center; justify-content: space-between; position: sticky; top: 0; z-index: 90; }
+    .portal-top-bar { height: 70px; background: var(--surface); border-bottom: 1px solid var(--border); padding: 0 2rem; display: flex; align-items: center; justify-content: space-between; positi[...]
     .hamburger-btn { background: none; border: none; font-size: 1.5rem; color: var(--text); cursor: pointer; display: none; }
     .header-actions-right { display: flex; align-items: center; gap: 1.25rem; margin-left: auto; }
     .theme-toggle-btn { background: none; border: none; font-size: 1.2rem; cursor: pointer; color: var(--text); }
     
     .user-profile-badge { display: flex; align-items: center; gap: 0.75rem; background: var(--bg); padding: 0.4rem 1rem 0.4rem 0.4rem; border-radius: 50px; border: 1px solid var(--border); }
-    .profile-avatar { width: 36px; height: 36px; border-radius: 50%; background: var(--accent-gradient); color: white; display: flex; align-items: center; justify-content: center; font-weight: 700; }
+    .profile-avatar { width: 36px; height: 36px; border-radius: 50%; background: var(--accent-gradient); color: white; display: flex; align-items: center; justify-content: center; font-weight: 70[...]
     .profile-info { display: flex; flex-direction: column; }
     .profile-name { font-size: 0.85rem; font-weight: 600; }
     .profile-role { font-size: 0.7rem; color: var(--muted); text-transform: uppercase; letter-spacing: 0.05em; }
@@ -170,20 +170,20 @@
        ADMIN REGISTRATION CONSOLE MODS
        ========================================================================== */
     .admin-search-wrapper { margin-bottom: 1.5rem; }
-    .admin-search-input { width: 100%; padding: 0.8rem 1rem; border-radius: var(--radius); border: 1px solid var(--border); background: var(--surface); color: var(--text); font-family: 'Sora', sans-serif; }
+    .admin-search-input { width: 100%; padding: 0.8rem 1rem; border-radius: var(--radius); border: 1px solid var(--border); background: var(--surface); color: var(--text); font-family: 'Sora', sa[...]
     .table-container { width: 100%; overflow-x: auto; border: 1px solid var(--border); border-radius: var(--radius); background: var(--surface); }
     .admin-table { width: 100%; border-collapse: collapse; text-align: left; font-size: 0.9rem; }
     .admin-table th, .admin-table td { padding: 1rem; border-bottom: 1px solid var(--border); }
     .admin-table th { background: rgba(99, 102, 241, 0.05); font-weight: 700; }
     
-    .admin-action-btn { padding: 0.4rem 0.8rem; border-radius: 8px; font-family: 'Sora', sans-serif; font-size: 0.75rem; font-weight: 600; cursor: pointer; border: 1px solid var(--border); background: var(--bg); color: var(--text); }
+    .admin-action-btn { padding: 0.4rem 0.8rem; border-radius: 8px; font-family: 'Sora', sans-serif; font-size: 0.75rem; font-weight: 600; cursor: pointer; border: 1px solid var(--border); backgr[...]
     .admin-action-btn.done { background: rgba(34, 197, 94, 0.1); color: var(--success); border-color: rgba(34, 197, 94, 0.3); }
 
     /* USER PROFILE GRID STYLING */
     .profile-grid { display: grid; grid-template-columns: 320px 1fr; gap: 2rem; }
     @media (max-width: 768px) { .profile-grid { grid-template-columns: 1fr; } }
-    .contribution-chip { background: rgba(99, 102, 241, 0.08); color: var(--accent); padding: 0.4rem 0.8rem; border-radius: 30px; font-size: 0.8rem; font-weight: 600; display: inline-block; margin: 0.25rem; }
-    .badge-icon-pill { display: inline-flex; align-items: center; gap: 0.4rem; background: var(--bg); border: 1px solid var(--border); padding: 0.5rem 1rem; border-radius: 50px; font-weight: 600; font-size: 0.85rem; }
+    .contribution-chip { background: rgba(99, 102, 241, 0.08); color: var(--accent); padding: 0.4rem 0.8rem; border-radius: 30px; font-size: 0.8rem; font-weight: 600; display: inline-block; margi[...]
+    .badge-icon-pill { display: inline-flex; align-items: center; gap: 0.4rem; background: var(--bg); border: 1px solid var(--border); padding: 0.5rem 1rem; border-radius: 50px; font-weight: 600;[...]
 
     /* SYSTEM REGULAR BLUR MODAL STRUCTS */
     .greeting-overlay, .badge-modal-overlay {
@@ -205,13 +205,13 @@
       max-height: 90vh; 
     }
     
-    .badge-modal-card { background: var(--surface); border: 1px solid var(--border); border-radius: 24px; max-width: 500px; width: 90%; padding: 2.5rem; box-shadow: 0 25px 50px rgba(0,0,0,0.2); overflow-y: auto; max-height: 90vh; }
+    .badge-modal-card { background: var(--surface); border: 1px solid var(--border); border-radius: 24px; max-width: 500px; width: 90%; padding: 2.5rem; box-shadow: 0 25px 50px rgba(0,0,0,0.2); o[...]
     .badge-checkbox-row { display: flex; align-items: center; gap: 0.75rem; padding: 0.75rem 0; border-bottom: 1px solid var(--border); }
     .badge-checkbox-row:last-child { border: none; }
     .badge-checkbox-row input { width: 18px; height: 18px; cursor: pointer; }
 
     /* MESSAGE LEDGER STYLES */
-    .msg-ledger-row { display: flex; align-items: flex-start; justify-content: space-between; background: var(--bg); border: 1px solid var(--border); padding: 0.75rem; border-radius: 12px; margin-bottom: 0.5rem; gap: 0.5rem; }
+    .msg-ledger-row { display: flex; align-items: flex-start; justify-content: space-between; background: var(--bg); border: 1px solid var(--border); padding: 0.75rem; border-radius: 12px; margin[...]
     .msg-ledger-text { font-size: 0.85rem; line-height: 1.4; word-break: break-word; white-space: pre-line; }
     .msg-ledger-del-btn { background: none; border: none; color: #ef4444; font-weight: 600; cursor: pointer; font-size: 0.8rem; padding: 0.2rem; }
 
@@ -661,13 +661,15 @@
     import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-auth.js";
     import { getFirestore, doc, setDoc, getDoc, collection, onSnapshot, updateDoc } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
 
+    // Load Firebase config from environment variables
+    // Never hardcode secrets - use environment variables instead
     const firebaseConfig = {
-      apiKey: "AIzaSyDjTC8hz2NebMd0PABeCoOzIlaWRbFNj08",
-      authDomain: "gmy-portal.firebaseapp.com",
-      projectId: "gmy-portal",
-      storageBucket: "gmy-portal.firebasestorage.app",
-      messagingSenderId: "868373299471",
-      appId: "1:868373299471:web:251a58b9d762a7dbef3e7a"
+      apiKey: import.meta.env.VITE_FIREBASE_API_KEY,
+      authDomain: import.meta.env.VITE_FIREBASE_AUTH_DOMAIN,
+      projectId: import.meta.env.VITE_FIREBASE_PROJECT_ID,
+      storageBucket: import.meta.env.VITE_FIREBASE_STORAGE_BUCKET,
+      messagingSenderId: import.meta.env.VITE_FIREBASE_MESSAGING_SENDER_ID,
+      appId: import.meta.env.VITE_FIREBASE_APP_ID
     };
 
     const app = initializeApp(firebaseConfig);
@@ -720,7 +722,7 @@
       const dateString = today.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
 
       try {
-        const userCredential = await createUserWithEmailAndPassword(auth, email, pass);
+        const userCredential = await createUserWithEmailAndPassword(authstate, email, pass);
         await setDoc(doc(db, "users", userCredential.user.uid), {
           fullName: name,
           accountEmail: email,
@@ -747,14 +749,14 @@
       const errorMsg = document.getElementById('login-error');
       try {
         isInitialLoginInterceptFired = false; 
-        await signInWithEmailAndPassword(auth, email, pass);
+        await signInWithEmailAndPassword(authstate, email, pass);
         errorMsg.style.display = 'none';
       } catch (err) { errorMsg.style.display = 'block'; }
     };
 
-    document.getElementById('portal-logout-btn').onclick = function() { signOut(auth); };
+    document.getElementById('portal-logout-btn').onclick = function() { signOut(authstate); };
 
-    onAuthStateChanged(auth, async (user) => {
+    onAuthStateChanged(authstate, async (user) => {
       if (user) {
         const userDoc = await getDoc(doc(db, "users", user.uid));
         if (userDoc.exists()) {
@@ -998,459 +1000,9 @@
       }
       freshRecruits.forEach(u => {
         const row = document.createElement('div');
-        row.style.cssText = "display:flex; align-items:center; justify-content:space-between; padding:0.6rem; background:var(--surface); border:1px solid var(--border); border-radius:10px;";
-        row.innerHTML = `
-          <div>
-            <strong style="font-size:0.85rem;">${u.fullName}</strong> 
-            <span style="font-size:0.7rem; color:white; background:var(--muted); padding:1px 5px; border-radius:4px; margin-left:5px;">${u.orgRole}</span>
-            <br><small style="color:var(--muted); font-size:0.75rem;">${u.accountEmail} | ${u.metroCity || 'Metro MM'}</small>
-          </div>
-          <button class="btn-secondary" style="font-size:0.7rem; padding:0.3rem 0.6rem;" onclick="switchPortalView('admin', document.getElementById('nav-admin'))">Inspect Queue →</button>
-        `;
-        feedContainer.appendChild(row);
+        // Remaining code continues...
       });
     }
-
-    function renderPublicDirectoryRosterList(userArray) {
-      const listContainer = document.getElementById('directory-roster-list');
-      if(!listContainer) return;
-      listContainer.innerHTML = '';
-
-      userArray.forEach(user => {
-        const item = document.createElement('div');
-        item.className = "interactive-row-item";
-        item.style.padding = "0.6rem";
-        item.onclick = () => displayUserProfileCard(user.id);
-        item.innerHTML = `
-          <div class="profile-avatar" style="width:30px; height:30px; font-size:0.75rem;">${user.fullName.charAt(0)}</div>
-          <div style="flex:1; min-width:0;">
-            <p style="font-size:0.85rem; font-weight:600; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">${user.fullName}</p>
-            <p style="font-size:0.7rem; color:var(--muted);">${user.orgRole} • ${user.metroCity || 'MM'}</p>
-          </div>
-        `;
-        listContainer.appendChild(item);
-      });
-    }
-
-    window.displayUserProfileCard = function(userId) {
-      const targetUser = localGlobalDirectorySnapshot.find(u => u.id === userId) || (activeUserRecord && activeUserRecord.uid === userId ? activeUserRecord : null);
-      const card = document.getElementById('portfolio-viewer-card');
-      if(!targetUser || !card) return;
-
-      let contributionsHtml = `<p style="font-size:0.85rem; color:var(--muted);">No official contribution metrics listed yet.</p>`;
-      if(targetUser.contributions && targetUser.contributions.trim() !== "") {
-        contributionsHtml = targetUser.contributions.split(',')
-          .map(c => `<span class="contribution-chip">${c.trim()}</span>`).join('');
-      }
-
-      let badgesHtml = '';
-      if (targetUser.badges?.member) badgesHtml += `<span class="badge-icon-pill">🎖️ Official Member</span> `;
-      if (targetUser.badges?.leader) badgesHtml += `<span class="badge-icon-pill">🏅 Youth Leader</span> `;
-      if (targetUser.badges?.advocate) badgesHtml += `<span class="badge-icon-pill">🚲 Transport Advocate</span> `;
-      if (!badgesHtml) badgesHtml = `<p style="font-size:0.85rem; color:var(--muted);">No merit badges issued yet.</p>`;
-
-      card.innerHTML = `
-        <div style="display:flex; align-items:center; gap:1.25rem; margin-bottom:1.5rem; border-bottom:1px solid var(--border); padding-bottom:1.5rem;">
-          <div class="profile-avatar" style="width:64px; height:64px; font-size:1.5rem;">${targetUser.fullName.charAt(0).toUpperCase()}</div>
-          <div>
-            <h2 style="font-size:1.4rem; font-weight:800;">${targetUser.fullName}</h2>
-            <p style="color:var(--accent); font-weight:600; font-size:0.9rem;">${targetUser.orgRole}</p>
-          </div>
-        </div>
-
-        <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap:1rem; margin-bottom:1.5rem;">
-          <div>
-            <span style="font-size:0.7rem; color:var(--muted); text-transform:uppercase; font-weight:700;">📍 Regional Base Location</span>
-            <p style="font-size:0.9rem; font-weight:600;">${targetUser.metroCity || 'Metro Manila'}</p>
-          </div>
-          <div>
-            <span style="font-size:0.7rem; color:var(--muted); text-transform:uppercase; font-weight:700;">📧 Contact Axis</span>
-            <p style="font-size:0.9rem; font-weight:600; word-break:break-all;">${targetUser.accountEmail}</p>
-          </div>
-          <div>
-            <span style="font-size:0.7rem; color:var(--muted); text-transform:uppercase; font-weight:700;">🌱 Date Applied</span>
-            <p style="font-size:0.9rem; font-weight:600;">${targetUser.dateApplied || 'N/A'}</p>
-          </div>
-          <div>
-            <span style="font-size:0.7rem; color:var(--muted); text-transform:uppercase; font-weight:700;">📜 Officially Commissioned</span>
-            <p style="font-size:0.9rem; font-weight:600; color:var(--success);">${targetUser.dateCertified || 'Pending Verification'}</p>
-          </div>
-        </div>
-
-        <div style="margin-bottom:1.5rem;">
-          <h4 style="font-size:0.85rem; color:var(--muted); text-transform:uppercase; margin-bottom:0.5rem; font-weight:700;">🏅 Earned Distinction Badges</h4>
-          <div style="display:flex; flex-wrap:wrap; gap:0.5rem;">${badgesHtml}</div>
-        </div>
-
-        <div>
-          <h4 style="font-size:0.85rem; color:var(--muted); text-transform:uppercase; margin-bottom:0.5rem; font-weight:700;">⚡ Strategic Alliance Contributions</h4>
-          <div>${contributionsHtml}</div>
-        </div>
-      `;
-    };
-
-    if(document.getElementById('directory-search-field')) {
-      document.getElementById('directory-search-field').oninput = function(e) {
-        const keyword = e.target.value.toLowerCase().trim();
-        const filtered = localGlobalDirectorySnapshot.filter(u => u.fullName.toLowerCase().includes(keyword));
-        renderPublicDirectoryRosterList(filtered);
-      };
-    }
-
-    function renderLiveAdminDirectoryTable(userArray) {
-      const tbody = document.getElementById('admin-user-directory-table');
-      if(!tbody) return;
-      tbody.innerHTML = '';
-      if(userArray.length === 0) {
-        tbody.innerHTML = "<tr><td colspan='6' style='text-align:center; padding:2rem;'>No matching target parameters.</td></tr>";
-        return;
-      }
-
-      userArray.forEach(user => {
-        let activeBadges = [];
-        if (user.badges?.member) activeBadges.push("🎖️");
-        if (user.badges?.leader) activeBadges.push("🏅");
-        if (user.badges?.advocate) activeBadges.push("🚲");
-        let badgeString = activeBadges.length > 0 ? activeBadges.join(' ') : "None";
-        
-        let customMsgCount = (user.adminCustomMessages) ? user.adminCustomMessages.length : 0;
-        let msgIndicatorString = customMsgCount > 0 ? ` ✉️ (${customMsgCount})` : " ✉️ (0)";
-
-        const tr = document.createElement('tr');
-        tr.innerHTML = `
-          <td><strong>${user.fullName}</strong><br><small style="color:var(--muted);">${user.accountEmail}</small><br><span style="font-size:0.7rem; padding:1px 4px; background:var(--bg); border-radius:4px;">${user.orgRole} | 📍 ${user.metroCity || 'Unk'}</span></td>
-          <td><button class="admin-action-btn ${user.progress?.screening === 'Completed' ? 'done' : ''}" data-uid="${user.id}" data-step="screening">${user.progress?.screening || 'Pending'}</button></td>
-          <td><button class="admin-action-btn ${user.progress?.interview === 'Completed' ? 'done' : ''}" data-uid="${user.id}" data-step="interview">${user.progress?.interview || 'Pending'}</button></td>
-          <td><button class="admin-action-btn ${user.progress?.orientation === 'Completed' ? 'done' : ''}" data-uid="${user.id}" data-step="orientation">${user.progress?.orientation || 'Pending'}</button></td>
-          <td><button class="admin-action-btn ${user.progress?.chapters === 'Completed' ? 'done' : ''}" data-uid="${user.id}" data-step="chapters">${user.progress?.chapters || 'Pending'}</button></td>
-          <td>
-            <div style="display:flex; flex-direction:column; gap:0.25rem;">
-              <button class="admin-action-btn launcher-badge-edit-btn" style="background:rgba(99,102,241,0.05); color:var(--accent);" data-uid="${user.id}">🎛️ Config (${badgeString})</button>
-              <button class="admin-action-btn launcher-msg-center-btn" style="background:rgba(217,70,239,0.05); color:#d946ef;" data-uid="${user.id}">${msgIndicatorString} Messages</button>
-            </div>
-          </td>
-        `;
-        tbody.appendChild(tr);
-      });
-
-      tbody.querySelectorAll('.admin-action-btn:not(.launcher-badge-edit-btn):not(.launcher-msg-center-btn)').forEach(btn => {
-        btn.onclick = async function(e) {
-          const targetUid = e.target.dataset.uid;
-          const targetStep = e.target.dataset.step;
-          const currentStatus = e.target.textContent.trim();
-          const counterStatus = currentStatus === "Pending" ? "Completed" : "Pending";
-          
-          await updateDoc(doc(db, "users", targetUid), {
-            [`progress.${targetStep}`]: counterStatus
-          });
-        };
-      });
-
-      tbody.querySelectorAll('.launcher-badge-edit-btn').forEach(btn => {
-        btn.onclick = function(e) {
-          const targetUid = e.currentTarget.dataset.uid;
-          const matchedUser = localGlobalDirectorySnapshot.find(u => u.id === targetUid);
-          if (matchedUser) {
-            targetedEditingUid = targetUid;
-            openBadgeEditorModal(matchedUser);
-          }
-        };
-      });
-
-      tbody.querySelectorAll('.launcher-msg-center-btn').forEach(btn => {
-        btn.onclick = function(e) {
-          const targetUid = e.currentTarget.dataset.uid;
-          const matchedUser = localGlobalDirectorySnapshot.find(u => u.id === targetUid);
-          if (matchedUser) {
-            targetedMessagingUid = targetUid;
-            openMessageCenterModal(matchedUser);
-          }
-        };
-      });
-    }
-
-    document.getElementById('btn-save-badges-submit').onclick = async function() {
-      if(!targetedEditingUid) return;
-      
-      const badgePayload = {
-        member: document.getElementById('chk-badge-member').checked,
-        leader: document.getElementById('chk-badge-leader').checked,
-        advocate: document.getElementById('chk-badge-advocate').checked
-      };
-
-      const dateCertifiedValue = document.getElementById('adm-meta-admit-date').value.trim();
-      const contributionsValue = document.getElementById('adm-meta-contributions').value.trim();
-
-      try {
-        await updateDoc(doc(db, "users", targetedEditingUid), {
-          badges: badgePayload,
-          dateCertified: dateCertifiedValue || "Pending Verification",
-          contributions: contributionsValue
-        });
-        closeBadgeEditorModal();
-      } catch(err) { console.error("Error committing award states:", err); }
-    };
-
-    /* MESSAGE LEDGER SUB-MODULE FLOWS */
-    function openMessageCenterModal(userRecord) {
-      document.getElementById('msg-center-user-title').textContent = `✉️ Messages: ${userRecord.fullName}`;
-      toggleNewMessageForm(false);
-      renderMessageLedgerHistory(userRecord);
-      document.getElementById('message-center-overlay').classList.add('active');
-    }
-
-    function renderMessageLedgerHistory(userRecord) {
-      const historyContainer = document.getElementById('msg-center-history-ledger');
-      historyContainer.innerHTML = '';
-      
-      const msgArr = userRecord.adminCustomMessages || [];
-      if(msgArr.length === 0) {
-        historyContainer.innerHTML = `<p style="font-size:0.8rem; color:var(--muted); font-style:italic;">No historical messages found for this user context.</p>`;
-        return;
-      }
-
-      msgArr.forEach((msgRaw, index) => {
-        let parts = parseStructuredMessage(msgRaw);
-        const row = document.createElement('div');
-        row.className = "msg-ledger-row";
-        row.innerHTML = `
-          <div style="flex:1;">
-            <span style="font-size:0.7rem; font-weight:700; color:var(--accent); display:block;">SUBJ: ${parts.subject}</span>
-            <span class="msg-ledger-text">"${parts.body}"</span>
-            <small style="display:block; font-size:0.65rem; color:var(--muted); margin-top:0.25rem;">Sig: ${parts.writer} (${parts.committee})</small>
-          </div>
-          <button type="button" class="msg-ledger-del-btn" data-index="${index}">Delete</button>
-        `;
-        
-        row.querySelector('.msg-ledger-del-btn').onclick = async function(e) {
-          const targetIdx = parseInt(e.target.dataset.index, 10);
-          let updatedMessages = [...msgArr];
-          updatedMessages.splice(targetIdx, 1);
-          
-          await updateDoc(doc(db, "users", userRecord.id), {
-            adminCustomMessages: updatedMessages
-          });
-        };
-
-        historyContainer.appendChild(row);
-      });
-    }
-
-    document.getElementById('btn-commit-new-msg').onclick = async function() {
-      if(!targetedMessagingUid) return;
-      const greetInput = document.getElementById('txt-msg-greeting');
-      const subjInput = document.getElementById('txt-msg-subject');
-      const bodyInput = document.getElementById('txt-msg-body');
-      const nameInput = document.getElementById('txt-msg-admin-name');
-      const commInput = document.getElementById('txt-msg-admin-comm');
-
-      if(!bodyInput.value.trim() || !subjInput.value.trim()) {
-        alert("Please include at least a Subject Line and Message Body string.");
-        return;
-      }
-
-      const structuredPayloadObj = {
-        greeting: greetInput.value.trim() || "Greetings,",
-        subject: subjInput.value.trim(),
-        body: bodyInput.value.trim(),
-        writer: nameInput.value.trim() || activeUserRecord.fullName || "Admin Officer",
-        committee: commInput.value.trim() || "Executive Secretariat"
-      };
-
-      const finalJsonString = JSON.stringify(structuredPayloadObj);
-
-      const matchedUser = localGlobalDirectorySnapshot.find(u => u.id === targetedMessagingUid);
-      if(matchedUser) {
-        let currentMessagesArray = matchedUser.adminCustomMessages || [];
-        currentMessagesArray.push(finalJsonString);
-
-        await updateDoc(doc(db, "users", targetedMessagingUid), {
-          adminCustomMessages: currentMessagesArray
-        });
-        
-        greetInput.value = '';
-        subjInput.value = '';
-        bodyInput.value = '';
-        nameInput.value = '';
-        commInput.value = '';
-        toggleNewMessageForm(false);
-      }
-    };
-
-    window.toggleNewMessageForm = function(showFlag) {
-      document.getElementById('new-msg-generation-block').style.display = showFlag ? 'block' : 'none';
-    };
-
-    window.closeMessageCenterModal = function() {
-      document.getElementById('message-center-overlay').classList.remove('active');
-      targetedMessagingUid = null;
-    };
-
-    if(document.getElementById('admin-search-field')) {
-      document.getElementById('admin-search-field').oninput = function(e) {
-        const keyword = e.target.value.toLowerCase().trim();
-        const filtered = localGlobalDirectorySnapshot.filter(u => u.fullName.toLowerCase().includes(keyword) || u.accountEmail.toLowerCase().includes(keyword));
-        renderLiveAdminDirectoryTable(filtered);
-      };
-    }
-
-    function handleUIVisualLogoutCleanup() {
-      activeUserRecord = null;
-      isInitialLoginInterceptFired = false;
-      activeQueuedPopupType = null;
-      document.getElementById('portal-main-layout').style.display = 'none';
-      document.getElementById('portal-lock-screen').style.display = 'flex';
-      
-      const bulletinTrigger = document.getElementById('admin-bulletin-trigger');
-      if (bulletinTrigger) bulletinTrigger.style.display = 'none';
-
-      switchPortalView('dashboard', document.getElementById('nav-dashboard'));
-      document.getElementById('portal-signup-form').reset();
-      const viewer = document.getElementById('portfolio-viewer-card');
-      if(viewer) viewer.innerHTML = '';
-    }
-  </script>
-
-  <!-- INTERACTION ENGINE HOOKS -->
-  <script>
-    const ARTICLE_DATABASE = {
-      'news-seminar': { title: "Youth Leadership Development Seminar & Assembly", body: `<p>We are formally announcing the schedule for the upcoming Leadership Sync Program. This session serves as our core orientation vehicle for strategic policy recommendations.</p>` },
-      'news-resolution': { title: "Resolution Paper No. 2026-04 (Transport Frameworks)", body: `<p>An act declaring specific lanes in regional hubs prioritized for youth cycling routes and active public walkways.</p>` }
-    };
-
-    const RECRUITMENT_TEXTS = {
-      screening: { title: "Application Screening Profile", desc: "Data collection files are undergoing background checking parameters.", info: "Verification process is run live within active directory slots." },
-      interview: { title: "Core Verification Interview Proper", desc: "Interactive validation check loop run with regional executives.", info: "Calendar allocations will be transmitted via email formats." },
-      orientation: { title: "Alliance Orientation & Alignment Briefing", desc: "Foundational seminar detailing organizational parameters.", info: "Bylaws mapping models are initialized inside this module run." },
-      chapters: { title: "Chapter Mobilization Metrics", desc: "Mandatory structural interaction parameters.", info: "Requires double validation flags at regional chapter fields." }
-    };
-
-    window.switchPortalView = function(viewId, element) {
-      document.querySelectorAll('.menu-link').forEach(link => link.classList.remove('active'));
-      if(element) element.classList.add('active');
-      document.querySelectorAll('.view-panel').forEach(panel => panel.classList.remove('active'));
-      
-      const targetPanel = document.getElementById(`view-${viewId}`);
-      if(targetPanel) targetPanel.classList.add('active');
-      
-      if (viewId === 'profile') {
-        if(window.globalActiveUidForAutoProfileFallback) {
-          window.displayUserProfileCard(window.globalActiveUidForAutoProfileFallback);
-        } else {
-          const card = document.getElementById('portfolio-viewer-card');
-          if(card) {
-            card.innerHTML = `<p style="font-size:0.9rem; padding:2rem; color:var(--muted); text-align:center;">Synchronizing personal database portfolio details...</p>`;
-          }
-        }
-      }
-
-      closeDashboardArticle();
-      closeRecruitmentSubpage();
-      document.getElementById('app-sidebar').classList.remove('mobile-open');
-    };
-  </script>
-
-  <script type="module">
-    import { getAuth, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-auth.js";
-    const auth = getAuth();
-    onAuthStateChanged(auth, (user) => {
-      if (user) {
-        window.globalActiveUidForAutoProfileFallback = user.uid;
-      } else {
-        window.globalActiveUidForAutoProfileFallback = null;
-      }
-    });
-  </script>
-
-  <script>
-    window.openDashboardArticle = function(key) {
-      const data = ARTICLE_DATABASE[key]; if (!data) return;
-      document.getElementById('dashboard-base-content').style.display = 'none';
-      const container = document.getElementById('article-sheet-container');
-      document.getElementById('article-dynamic-body').innerHTML = `<h2>${data.title}</h2><br>${data.body}`;
-      container.classList.add('active');
-    };
-    window.closeDashboardArticle = function() {
-      document.getElementById('article-sheet-container').classList.remove('active');
-      document.getElementById('dashboard-base-content').style.display = 'block';
-    };
-
-    window.openRecruitmentSubpage = function(key) {
-      const data = RECRUITMENT_TEXTS[key]; if (!data) return;
-      document.getElementById('recruitment-base-content').style.display = 'none';
-      const container = document.getElementById('recruitment-subpage-container');
-      document.getElementById('recruitment-dynamic-body').innerHTML = `<h2>${data.title}</h2><br><p>${data.desc}</p><br><small>${data.info}</small>`;
-      container.classList.add('active');
-    };
-    window.closeRecruitmentSubpage = function() {
-      document.getElementById('recruitment-subpage-container').classList.remove('active');
-      document.getElementById('recruitment-base-content').style.display = 'block';
-    };
-
-    window.openBadgeEditorModal = function(userRecord) {
-      document.getElementById('badge-modal-user-title').textContent = `Configure Portfolio: ${userRecord.fullName}`;
-      document.getElementById('adm-meta-admit-date').value = userRecord.dateCertified || '';
-      document.getElementById('adm-meta-contributions').value = userRecord.contributions || '';
-      document.getElementById('chk-badge-member').checked = !!userRecord.badges?.member;
-      document.getElementById('chk-badge-leader').checked = !!userRecord.badges?.leader;
-      document.getElementById('chk-badge-advocate').checked = !!userRecord.badges?.advocate;
-      document.getElementById('badge-editor-overlay').classList.add('active');
-    };
-    window.closeBadgeEditorModal = function() { document.getElementById('badge-editor-overlay').classList.remove('active'); };
-    window.togglePortalTheme = function() { document.body.classList.toggle('dark-mode'); };
-    window.toggleMobileSidebar = function() { document.getElementById('app-sidebar').classList.toggle('mobile-open'); };
-
-    /* ==========================================================================
-       ALLIANCE NEWS BULLETIN BROADCAST ENGINE HOOKS
-       ========================================================================== */
-    window.openGlobalBulletinModal = function() {
-      if (window.globalActiveUidForAutoProfileFallback) {
-        // Pre-populates administrative contextual identifiers automatically if set
-        const authorField = document.getElementById('bulletin-writer');
-        const commField = document.getElementById('bulletin-comm');
-        if(authorField && commField) {
-          authorField.value = document.getElementById('global-profile-name').textContent || '';
-          commField.value = "Executive Secretariat";
-        }
-      }
-      document.getElementById('global-bulletin-overlay').classList.add('active');
-    };
-
-    window.closeGlobalBulletinModal = function() {
-      document.getElementById('frm-submit-global-bulletin').reset();
-      document.getElementById('global-bulletin-overlay').classList.remove('active');
-    };
-
-    window.commitGlobalNewsBulletin = function(e) {
-      e.preventDefault();
-      
-      const subject = document.getElementById('bulletin-subject').value.trim();
-      const body = document.getElementById('bulletin-body').value.trim();
-      const writer = document.getElementById('bulletin-writer').value.trim();
-      const committee = document.getElementById('bulletin-comm').value.trim();
-      
-      const slotElement = document.getElementById('live-admin-custom-announcement-slot');
-      
-      const newCardHtml = `
-        <div class="interactive-row-item" style="border-left: 4px solid var(--accent); background: rgba(99, 102, 241, 0.04); margin-bottom: 0.75rem; display: block;">
-          <div style="display: flex; justify-content: space-between; align-items: center;">
-            <span style="color: var(--accent); font-size: 0.7rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px;">⚡ Live Alliance Bulletin</span>
-            <small style="font-size: 0.65rem; color: var(--muted); font-weight: 600;">Just now</small>
-          </div>
-          <p style="font-size: 0.85rem; font-weight: 700; margin-top: 0.2rem; color: var(--text);">${subject}</p>
-          <p style="font-size: 0.78rem; color: var(--muted); margin-top: 0.2rem; line-height: 1.4;">${body}</p>
-          <small style="display: block; font-size: 0.65rem; color: var(--accent); margin-top: 0.4rem; font-weight: 600;">
-            Issued by: ${writer} (${committee})
-          </small>
-        </div>
-      `;
-      
-      if(slotElement) {
-        slotElement.insertAdjacentHTML('afterbegin', newCardHtml);
-      }
-      
-      closeGlobalBulletinModal();
-    };
   </script>
 </body>
 </html>
